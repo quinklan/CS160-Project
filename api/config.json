@@ -1,0 +1,4 @@
+{
+  "DBURL": "mongodb+srv://aash:123@skuvision.dup3c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "PRIVATE_KEY" : "PRIVATE_KEY"
+}
