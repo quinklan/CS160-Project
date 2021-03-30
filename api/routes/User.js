@@ -2,12 +2,20 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const {
+  OK,
+  BAD_REQUEST,
+  UNAUTHORIZED,
+  FORBIDDEN,
+  NOT_FOUND,
+  CONFLICT
+} = require('../constants').STATUS_CODES;
 
-router.post('/createUser', (req, res) =>{
-  const newUser = {
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
+
+router.post('/createUser', (req, res) =>{  
+  const newUser = req.body;
+  if(!newUser.email){
+    res.status(BAD_REQUEST).send("Must Provide Email") 
   }
   User.findOne({
     email: req.body.email
@@ -17,19 +25,21 @@ router.post('/createUser', (req, res) =>{
           newUser.password = hash
           User.create(newUser)
             .then(user => {
-              res.json({ status: user.email + ' Registered!' })
+              res.status(OK).json({ status: user.email + ' Registered!' })
             })
             .catch(err => {
-              res.send('error: ' + err)
+              res.status(BAD_REQUEST).send('error: ' + err);
             })
         })
       } else {
-        res.json({ error: ' User already exists' })
+        res.status(CONFLICT).json({ error: ' User already exists' })
       }
     })
     .catch(err => {
-      res.send('error: ' + err)
+      res.status(BAD_REQUEST).send('error: ' + err)
     })
 })
+
+router.post('/editUser')
 
 module.exports = router;

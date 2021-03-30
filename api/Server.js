@@ -26,10 +26,11 @@ app.use(
 // });
 mongoose.connect(DBURL, { useNewUrlParser: true, useUnifiedTopology: true });
 
-var User = require('./routes/User');
+const User = require('./routes/User');
 app.use('/user', User);
  
-
+const Listing = require('./routes/Listing');
+app.use('/listing', Listing);
 
 app.listen(port,function(){
   console.log('Server is running on port: ' + port);

@@ -1,8 +1,16 @@
 import React from 'react';
-
+// import DefaultNavbar from '../../Components/Navbar/DefaultNavbar';
+import './home.css'
 const Home = (props) =>  {
+  {console.log("bye")}
+
   return(
-    <h1>Home Page</h1>
+    <div className = 'home'>
+        <h1>Welcome to Gamer Nation</h1>
+        <img className = 'home-logo' src={process.env.PUBLIC_URL + '/Logo.png'} /> 
+        
+    </div>
+    
   )
 }
 
