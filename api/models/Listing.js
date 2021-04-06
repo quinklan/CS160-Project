@@ -11,19 +11,37 @@ const ListingSchema = new Schema(
     },
     price:{
       type: Number,
+      required: true 
+    },
+    picture: {
+      type: String,
       required: true
     },
     buyer:{
       type: Schema.Types.ObjectId,
-      ref: 'User',
-      default: null
+    },
+    creator:{
+      type: Schema.Types.ObjectId,
+      required: true
+    },
+    console:{
+      type: String,
+      required: true
     }
   }
 );
 
-ListingSchema.pre('deleteOne', {document: true}, function(callback) {
-  User.find(this.id)
-})
-
+ListingSchema.pre('findByIdAndDelete', { document: true, query: false}, function(next) {
+  // get the list of users in order to delete tag from their tags array
+  User.find({ '_id': { $in: this.users}}, (error, users) => {
+      if(error) 
+          return res.status(BAD_REQUEST).send({ message: 'Bad Request'});
+      users.forEach((user, index) => {
+          user.listings.pull(this.id);
+          user.save();
+      })
+  })
+  next()
+});
 
 module.exports = mongoose.model('Listing', ListingSchema)

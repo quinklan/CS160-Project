@@ -3,6 +3,7 @@ const config = require("./config.json");
 const mongoose = require('mongoose')
 var express = require("express");
 var bodyParser = require('body-parser');
+
 const port = 5000;
 const DBURL = config.DBURL;
 const client = new MongoClient(DBURL , { useNewUrlParser: true, useUnifiedTopology: true });
@@ -16,14 +17,7 @@ app.use(
     extended:false
   })
 )
-// client.connect((err, dbInstance) => { 
-//   if (err) {
-//       console.log(`[MongoDB connection] ERROR: ${err}`);
-//   } else { 
-//       const dbObject = dbInstance.db("cmpe-131");
-//       console.log("[MongoDB connection] SUCCESS");
-//   } 
-// });
+
 mongoose.connect(DBURL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const User = require('./routes/User');

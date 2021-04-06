@@ -8,7 +8,7 @@
 }
 
 .navbar-logo{
-  width: 190px;
+  width: 180px;
   left: -35px;
   position: absolute;
 }
@@ -24,7 +24,7 @@
 .navbar-link{
   text-decoration: none;
   font-size: x-large;
-  margin: 10px;
+  margin: 15px;
   color: white;
   outline: none;
 }
