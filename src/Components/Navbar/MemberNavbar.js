@@ -6,23 +6,15 @@ import Typography from '@material-ui/core/Typography';
 import {Link} from "react-router-dom";
 
 import './Navbar.css';
-const DefaultNavbar = (props) => {
+import ProfileDropdown from '../ProfileDropdown/ProfileDropdown';
+const MemberNavbar = (props) => {
   return  (
-  <AppBar className = 'navbar' position="static">
+  <AppBar className = 'navbar' position="static" style = {{height: 70}}>
         <Toolbar className = 'navbar-body'>
           <img className = 'navbar-logo' src={process.env.PUBLIC_URL + '/LogoText.png'} /> 
           <div className = 'navbar-links-container'>
-            <Link className = 'navbar-link' to = '/SignUp'>
-              <Typography variant = 'h6'>
-                Sign Up
-              </Typography>
-            </Link>
-            <Link className = 'navbar-link' to = '/Login'>
-              {/* <p>Login</p> */}
-              <Typography variant = 'h6'>
-                Login
-              </Typography>
-            </Link>
+            
+            <ProfileDropdown {...props}/>
             
           </div>
         </Toolbar>
@@ -30,4 +22,4 @@ const DefaultNavbar = (props) => {
   )
 }
 
-export default DefaultNavbar;
+export default MemberNavbar;

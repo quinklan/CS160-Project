@@ -30,13 +30,14 @@ const UserSchema = new Schema(
     },
     listings:{
       type: [Schema.Types.ObjectId],
-      default: null
     },
-    bought: [{type: [Schema.Types.ObjectId], ref: 'Listing'}]
+    bought: [
+      {type: [Schema.Types.ObjectId]}
+    ]
     
   }
 )
 
-UserSchema.pr
+
 
 module.exports = mongoose.model('User', UserSchema)

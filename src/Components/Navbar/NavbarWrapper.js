@@ -1,14 +1,27 @@
 import React from 'react';
 import DefaultNavbar from './DefaultNavbar';
+import MemberNavbar from './MemberNavbar';
 
 const NavbarWrapper = ({
-  component: Component,
+  component: Component, ...appProps
 }) => {
-  {console.log("hi")}
+  const handleLogout = () => {
+    appProps.setAuthenticated(false);
+    window.localStorage.removeItem('jwtToken');
+    window.location.reload();
+  }
+
+  const getNavBar = (verified) =>{
+    if(verified){
+      return <MemberNavbar  handleLogout={handleLogout}/>;
+    }else{
+      return <DefaultNavbar handleLogout={handleLogout}/>;
+    }
+  }
   return (
     <React.Fragment>
-      <DefaultNavbar/>
-      <Component></Component>
+      {(getNavBar(appProps.authenticated))}
+      <Component {...appProps}></Component>
     </React.Fragment>
   )
 }
