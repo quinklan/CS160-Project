@@ -63,6 +63,17 @@ router.get('/getListings', (req, res) => {
     })
 })
 
+router.post('/getOneListing', (req, res) => {
+  Listing.findById(req.body.id)
+    .then((listing) => {
+      res.status(OK).send(listing)
+    })
+    .catch((err) => {
+      res.status(BAD_REQUEST).send(err);
+    });
+})
+
+
 router.post('/editListing', (req, res) => {
   const newListing = req.body;
   Listing.findByIdAndUpdate(newListing.id, newListing)

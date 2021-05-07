@@ -2,8 +2,6 @@ import React from 'react';
 // import DefaultNavbar from '../../Components/Navbar/DefaultNavbar';
 import './home.css'
 const Home = (props) =>  {
-  {console.log("bye")}
-
   return(
     <div className = 'home'>
         <h1>Welcome to Gamer Nation</h1>

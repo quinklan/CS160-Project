@@ -13,7 +13,9 @@ export default function Main(props) {
   const [price, setPrice] = useState('');
   const [console, setConsole] = useState('');
   const [picture, setPicture] = useState('');
+  const [address, setAddress] = useState('');
 
+ 
 
   const handleOpen = () => {
     setOpen(true);
@@ -22,6 +24,8 @@ export default function Main(props) {
   const handleClose = () => {
     setOpen(false);
   }
+
+  
 
   const handleCreateListing = async(listing) => {
     
@@ -48,9 +52,13 @@ export default function Main(props) {
           setPrice = {setPrice}
           setConsole = {setConsole}
           setPicture = {setPicture}
+          setAddress = {setAddress}
           createListing = {() => handleCreateListing({name, price, console, picture })}
           handleClose = {handleClose}
         />
+
+        
+
         <Grid container style = {{ width: '85%', justify: 'center', marginTop: 15}} spacing = {10}>
           <Grid item xs = {12}> 
             <Typography variant = 'h4' align = 'center'>
@@ -75,121 +83,24 @@ export default function Main(props) {
                 style = {{width: '100%', backgroundColor: '#1de9b6', height: '100%'}}
                 onClick = {handleOpen}
                 >
-                
                   Create
                   <Add/>
               </Button>
             </Grid>
           </Grid>
           {listings.map((listing, index) => {
-            if(listing.name.toLowerCase().includes(search.toLowerCase())){
+            if(!listing.buyer && listing.name.toLowerCase().includes(search.toLowerCase())){
               return (
                 <Grid key = {index} item xs = {12} sm  = {6} lg = {4}>
                   <Listing
                     {...listing}
+                    buy = {true}
                   />
                 </Grid>
               )
             }
           })}
           
-          {/* <Grid item xs = {12} sm  = {6} lg = {4}>
-            <Listing></Listing>
-          </Grid>
-          <Grid item  xs = {12} sm  = {6} lg = {4}>
-            <Listing></Listing>
-          </Grid>
-          <Grid item sm  = {4} lg = {4}>
-            <Paper color = 'primary' style = {{backgroundColor:'lightGreen', width: '100%', textAlign: 'center'}}>
-              hi
-            </Paper>
-          </Grid>
-          <Grid item sm  = {4}>
-            <Paper color = 'primary' style = {{backgroundColor:'lightGreen', width: '100%', textAlign: 'center'}}>
-              hi
-            </Paper>
-          </Grid>
-          <Grid item sm  = {3}>
-            <Paper color = 'primary' style = {{backgroundColor:'lightGreen', width: '100%', textAlign: 'center'}}>
-              hi
-            </Paper>
-          </Grid>
-          <Grid item sm  = {3}>
-            <Paper color = 'primary' style = {{backgroundColor:'lightGreen', width: '100%', textAlign: 'center'}}>
-              hi
-            </Paper>
-          </Grid>
-          <Grid item sm  = {3}>
-            <Paper color = 'primary' style = {{backgroundColor:'lightGreen', width: '100%', textAlign: 'center'}}>
-              hi
-            </Paper>
-          </Grid>
-          <Grid item sm  = {3}>
-            <Paper color = 'primary' style = {{backgroundColor:'lightGreen', width: '100%', textAlign: 'center'}}>
-              hi
-            </Paper>
-          </Grid> */}
-          {/* <Grid item>
-            <Listing></Listing>
-
-          </Grid>
-          <Grid item>
-            <Listing></Listing>
-
-          </Grid>
-          <Grid item>
-            <Listing></Listing>
-
-          </Grid>
-          <Grid item>
-            <Listing></Listing>
-
-          </Grid>
-          <Grid item>
-            <Listing></Listing>
-
-          </Grid>
-          <Grid item>
-            <Listing></Listing>
-
-          </Grid>
-          <Grid item>
-            <Listing></Listing>
-
-          </Grid>
-          <Grid item>
-            <Listing></Listing>
-
-          </Grid>
-          <Grid item>
-            <Listing></Listing>
-
-          </Grid>
-          <Grid item>
-            <Listing></Listing>
-
-          </Grid>
-
-          <Grid item>
-            <Listing></Listing>
-
-          </Grid>
-          <Grid item>
-            <Listing></Listing>
-
-          </Grid>
-          <Grid item>
-            <Listing></Listing>
-
-          </Grid>
-          <Grid item>
-            <Listing></Listing>
-
-          </Grid>
-          <Grid item>
-            <Listing></Listing>
-
-          </Grid> */}
         </Grid>
       </div>
     </React.Fragment>

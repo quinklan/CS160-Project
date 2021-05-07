@@ -27,6 +27,19 @@ export const createListing = async(listing) => {
       response.error = true;
       response.body = error;
     })
+  return response;
+}
 
+export const getOneListing = async(id) => {
+  let response = {error: false, body: null};
+  await axios
+    .post('http://localhost:5000/listing/getOneListing', {id})
+    .then((res) => {
+      response.body = res;
+    })
+    .catch(error => {
+      response.error = true;
+      response.body = error;
+    })
   return response;
 }

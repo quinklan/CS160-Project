@@ -10,11 +10,17 @@
 }
 
 .admin-link{
+ 
+  text-transform: none !important;
   text-decoration: none;
   color: black;
-  font-size: x-large
+  font-size: x-large;
+  width: 100%;
+  background-color: #1de9b6;
 }
-
+.admin-link span{
+  justify-content: left;
+}
 .epijLH{
   margin-top: 100px;
   mix-blend-mode: color-dodge;
@@ -29,6 +35,11 @@
 
 .iPkkua{
   background-color: #1de9b6;
+  
+}
+
+.iqOUcR{
+  min-width: 12rem;
 }
 
 /* .iPkkua:hover{
@@ -47,10 +58,10 @@
   text-overflow: ellipsis;
   overflow-wrap: initial;
   margin-left: 5px;
-  color: #eb5757
+  color: #3a3a3a
 }
 
 .profile-drop-email{
-  color: #0d98ba !important;
+  color: #3fb497 !important;
 
 }

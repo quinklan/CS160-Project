@@ -46,3 +46,19 @@ export const checkIfUserIsSignedIn = async() => {
     });
   return response;
 }
+
+export const getUser = async(id) => {
+  const token = window.localStorage ? window.localStorage.getItem('jwtToken'):'';
+  if(!token){
+    return token;
+  }
+  const response = await axios
+    .post('http://localhost:5000/user/getUser', { id })
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      return err;
+    });
+  return response;
+}

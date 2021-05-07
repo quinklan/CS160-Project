@@ -1,6 +1,7 @@
+import { Button, Divider } from '@material-ui/core';
 import React from 'react';
 import {AvatarMenu, MenuItem } from 'react-rainbow-components';
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 
 import './profile-dropdown.css'
 
@@ -27,6 +28,7 @@ const ProfileDropdown = (props) => {
                           {props.user.email}
                         </p>
                     </div>
+                    <Divider/>
                 </li> : null}
 
 
@@ -49,13 +51,18 @@ const ProfileDropdown = (props) => {
                   />
                 </Link>
                 */}
-                <Link className = 'admin-link'  to = '/' onClick = {props.handleLogout}>
-                  <MenuItem
+                <Button className = 'admin-link' onClick = {() =>  {props.history.push("/account")}} >
+                 
+                  Account
+                </Button> 
+                <Button className = 'admin-link'  to = '/' onClick = {props.handleLogout}>
+                  {/* <MenuItem
                       className ='profile-menu-item'
                       label="Logout"
-                      // iconPosition="left"
-                  />
-                </Link> 
+                  /> */}
+                  Logout
+                </Button> 
+                
             </AvatarMenu>
     </React.Fragment>
   )

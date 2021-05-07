@@ -42,7 +42,6 @@ router.post('/createUser', (req, res) =>{
               res.status(OK).json({ status: user.email + ' Registered!' })
             })
             .catch(err => {
-              console.log(err)
               res.status(BAD_REQUEST).send('error: ' + err);
             })
         })
@@ -99,10 +98,22 @@ router.post('/login', (req, res) => {
       }
     })
     .catch((error) => {
-      console.log(error)
       res.status(BAD_REQUEST).send(error);
     })
 })
+
+router.post('/getUser',(req,res) => {
+  console.log('req', req);
+  User.findById(req.body.id) 
+    .then((user) => {
+      console.log(user)
+      res.status(OK).send(user);
+    })
+    .catch((error) => {
+      res.status(BAD_REQUEST).send(error);
+    })
+})
+
 
 
 module.exports = router;

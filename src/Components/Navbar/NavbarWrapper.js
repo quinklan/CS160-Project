@@ -13,7 +13,7 @@ const NavbarWrapper = ({
 
   const getNavBar = (verified) =>{
     if(verified){
-      return <MemberNavbar  handleLogout={handleLogout}/>;
+      return <MemberNavbar  {...appProps} handleLogout={handleLogout}/>;
     }else{
       return <DefaultNavbar handleLogout={handleLogout}/>;
     }
