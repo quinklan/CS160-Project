@@ -6,11 +6,17 @@ import NavbarWrapper from './Components/Navbar/NavbarWrapper';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
 import Main from './Pages/Main/Main';
+import Account from './Pages/Account/Account';
 export default function Routing({appProps}){
   const signedInRoutes = [
     {
       Component: Main,
       path: '/main',
+      redirect: '/login'
+    },
+    {
+      Component:Account,
+      path: '/account',
       redirect: '/login'
     }
   ]

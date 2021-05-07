@@ -6,6 +6,9 @@
   /* margin: 10px */
   /* display: inline !important; */
 }
+#admin-logo{
+  cursor: pointer;
+}
 
 .navbar-logo{
   width: 180px;
