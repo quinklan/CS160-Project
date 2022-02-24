@@ -1,5 +1,3 @@
-// import React from 'react';
-import Home from './Pages/Home/Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './Components/Routing/PrivateRoute';   
 import NavbarWrapper from './Components/Navbar/NavbarWrapper';

@@ -12,11 +12,11 @@ const MemberNavbar = (props) => {
   return  (
   <AppBar className = 'navbar' position="static" style = {{height: 70}}>
         <Toolbar className = 'navbar-body'>
-          <img 
+          {/* <img 
             onClick = {() =>  {props.history.push("/main")}}
             className = 'navbar-logo' 
             id= 'admin-logo'
-            src={process.env.PUBLIC_URL + '/LogoText.png'} /> 
+            src={process.env.PUBLIC_URL + '/LogoText.png'} />  */}
           <div className = 'navbar-links-container'>
             
             <ProfileDropdown {...props}/>

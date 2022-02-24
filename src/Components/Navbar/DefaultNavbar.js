@@ -10,7 +10,7 @@ const DefaultNavbar = (props) => {
   return  (
   <AppBar className = 'navbar' position="static">
         <Toolbar className = 'navbar-body'>
-          <img className = 'navbar-logo' src={process.env.PUBLIC_URL + '/LogoText.png'} /> 
+          {/* <img className = 'navbar-logo' src={process.env.PUBLIC_URL + '/LogoText.png'} />  */}
           <div className = 'navbar-links-container'>
             <Link className = 'navbar-link' to = '/SignUp'>
               <Typography variant = 'h6'>
