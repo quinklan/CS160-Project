@@ -1,5 +1,4 @@
 import { Divider, Grid, Typography } from '@material-ui/core';
-import Listing from '../../Components/Listing/Listing';
 
 import React, { useEffect, useState } from 'react';
 import { getUser } from '../../ApiFunctions/User';
@@ -50,10 +49,10 @@ const Account = (props) => {
     <div style = {{padding: 0 , width: '100%', textAlign: '-webkit-center'}}>
       <Grid container spacing = {5} style = {{ width: '85%', justify: 'center', marginTop: 15}}>
         <Grid item xs = {12} style = {{textAlign: 'left'}}>       
-          <Typography variant="h4">My Listings</Typography>
+          <Typography variant="h4">My Account</Typography>
           <Divider/>
         </Grid>
-        {listings.map((listing, index) => {
+        {/* {listings.map((listing, index) => {
           console.log(listing)
           return(<Grid item key = {listing.body.data._id} item xs = {12} sm  = {6} lg = {4}>
               <Listing
@@ -77,7 +76,7 @@ const Account = (props) => {
               /> 
             </Grid>)
         })}
-        
+         */}
       </Grid>
     </div>
   )
