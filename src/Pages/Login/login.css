@@ -1,9 +1,11 @@
+
 .login-container{
   background-color: #707070;
   width: 350px;
   height: 450px;
   border-radius: 7px;
   outline: transparent;
+  
 }
 
 .login-field{
@@ -12,5 +14,10 @@
 }
 
 .login{
-  text-align: -webkit-center;
+  text-align: right;
+}
+
+.background{
+  height: 90vh;
+  background-color: #000000;
 }
