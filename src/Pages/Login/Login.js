@@ -13,6 +13,7 @@ import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 import { login } from "../../ApiFunctions/User";
 import './login.css'
 import $ from "jquery";
+import { green } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -80,7 +81,7 @@ export default function Login(props) {
           onSubmit={() => submitHandler({ email, password })}
         > */}
           <Grid container spacing={2} xs={12}>
-            <Grid item xs={8}>
+            <Grid item xs={8} style={{color:"#FFFFFF"}}>
               <Grid item xs={6} align="center">
                 <img src="/profile-1.png" height="30%" width="70%" />
               </Grid>
