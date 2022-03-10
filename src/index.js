@@ -4,14 +4,14 @@ import './index.css';
 import Routing from './Routing';
 import { withRouter } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme } from '@material-ui/core';
+import { createTheme } from '@material-ui/core';
 import createTypography from '@material-ui/core/styles/';
 import createPalette from '@material-ui/core/styles/';
 
 import {checkIfUserIsSignedIn} from './ApiFunctions/User';
 import { teal } from '@material-ui/core/colors';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: '#f69e20'
