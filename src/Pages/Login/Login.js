@@ -11,9 +11,9 @@ import Container from "@material-ui/core/Container";
 import { Alert } from "@material-ui/lab/";
 import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 import { login } from "../../ApiFunctions/User";
-import "./login.css";
 import $ from "jquery";
 import { green } from "@material-ui/core/colors";
+import Landing from "../../Components/Landing/Landing";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -34,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     margin: theme.spacing(2, 0, 0),
   },
+  field: {
+    background: "#FFFFFF"
+  }
 }));
 
 export default function Login(props) {
@@ -63,99 +66,65 @@ export default function Login(props) {
   });
 
   return (
-    <Container component="main" className="background">
-      <CssBaseline />
-      <div className={classes.paper}>
-        {error ? (
-          <Alert className={classes.alert} severity="error">
-            Login Unsuccessful
-          </Alert>
-        ) : null}
-
-        {/* <form
-          id="login-form"
-          className={classes.form}
-          noValidate
-          onSubmit={() => submitHandler({ email, password })}
-        > */}
-        <Grid container spacing={2} xs={12}>
-          <Grid item xs={8} style={{ color: "#FFFFFF" }}>
-            <Grid item xs={6} align="center">
-              <img src="/profile-1.png" height="30%" width="70%" />
-            </Grid>
-            <Grid item xs={6} align="center">
-              <Typography variant="h3">QuickBite</Typography>
-            </Grid>
-            <Grid container spacing={2}>
-              <Grid item xs={6} align="center">
-                <Typography variant="h4" spacing={2}>
-                  Login
-                </Typography>
-              </Grid>
-              <Grid item xs={6}></Grid>
-              <Grid item xs={6}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-              </Grid>
-              <Grid item xs={6}></Grid>
-              <Grid item xs={6}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                />
-                <Grid item xs={6}></Grid>
-                <Grid item xs={12}>
-                  <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    className={classes.submit}
-                  >
-                    Login
-                  </Button>
-                </Grid>
-                <Grid item xs={12}>
-                  <Button
-                    //type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="secondary"
-                    //className={classes.submit}
-                  >
-                    Signup
-                  </Button>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item xs={4} width="100%">
-            <Grid item xs={12}>
-              <img src="/login_image.png" width="100%" height="100%" />
-            </Grid>
-          </Grid>
+    <Landing>
+      <Grid item xs={12} align="center">
+        <Typography variant="h4" spacing={2}>
+          Login
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
+          <TextField
+              className={classes.field}
+              variant="filled"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+      </Grid>
+      <Grid item xs={12}>
+        <TextField
+              className={classes.field}
+              variant="filled"
+              required
+              fullWidth
+              id="password"
+              label="Password"
+              name="password"
+              autoComplete="password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+        <Grid item xs={12}>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Login
+          </Button>
         </Grid>
-        {/* </form> */}
-      </div>
-    </Container>
+        <Grid item xs={12}>
+          <Button
+            //type="submit"
+            fullWidth
+            variant="contained"
+            color="secondary"
+            //className={classes.submit}
+          >
+            Signup
+          </Button>
+        </Grid>
+      </Grid>
+    
+    </Landing>
   );
 }
