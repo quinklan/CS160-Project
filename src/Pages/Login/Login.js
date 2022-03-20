@@ -11,13 +11,13 @@ import Container from "@material-ui/core/Container";
 import { Alert } from "@material-ui/lab/";
 import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 import { login } from "../../ApiFunctions/User";
-import './login.css'
+import "./login.css";
 import $ from "jquery";
 import { green } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    height: '100%',
+    height: "100%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -62,9 +62,7 @@ export default function Login(props) {
     return false;
   });
 
-
   return (
-
     <Container component="main" className="background">
       <CssBaseline />
       <div className={classes.paper}>
@@ -142,7 +140,7 @@ export default function Login(props) {
                     fullWidth
                     variant="contained"
                     color="secondary"
-                  //className={classes.submit}
+                    //className={classes.submit}
                   >
                     Signup
                   </Button>
@@ -150,7 +148,7 @@ export default function Login(props) {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={4} width='100%'>
+          <Grid item xs={4} width="100%">
             <Grid item xs={12}>
               <img src="/login_image.png" width="100%" height="100%" />
             </Grid>
@@ -159,7 +157,5 @@ export default function Login(props) {
         {/* </form> */}
       </div>
     </Container>
-
-
   );
 }

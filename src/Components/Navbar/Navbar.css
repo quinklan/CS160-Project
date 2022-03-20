@@ -11,10 +11,40 @@
 }
 
 .navbar-logo{
+  /* width: 180px; */
+  /* left: 1000 px; */
+  /* padding-top: 1%; */
+  /* position: absolute; */
+  text-decoration: none;
+  font-size: x-large;
+  margin: 15px;
+  color: white;
+  outline: none;
+}
+
+.logo-img{
+  float: right;
+  /* width: 3%; */
+}
+
+.logo-text{
+  float: right;
+  /* display: table; */
+  /* padding-right:10 px; */
+  /* width: 10%; */
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* .navbar-logo{
   width: 180px;
   left: -35px;
   position: absolute;
-}
+} */
 
 .navbar-links-container{
   /* float: right; */
@@ -35,3 +65,11 @@
 .navbar-link :hover{
   color: #00E3AA;
 }
+
+/* .navbar-logo {
+  text-decoration: none;
+  font-size: x-large;
+  margin: 15px;
+  color: white;
+  outline: none;
+} */
