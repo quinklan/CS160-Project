@@ -8,12 +8,12 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {Alert} from '@material-ui/lab/';
+import { Alert } from '@material-ui/lab/';
 
-import {login} from '../../ApiFunctions/User';
+import { login } from '../../ApiFunctions/User';
 
 
-import $ from 'jquery'; 
+import $ from 'jquery';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -29,9 +29,9 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0),
   },
-  alert:{
+  alert: {
     width: '100%',
-    margin: theme.spacing(2,0,0)
+    margin: theme.spacing(2, 0, 0)
   }
 }));
 
@@ -41,13 +41,13 @@ export default function Login(props) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
 
-  const submitHandler = async(user) => {
-    
+  const submitHandler = async (user) => {
+
     login(user)
       .then(res => {
-        if(res.error){
+        if (res.error) {
           setError(true)
-        }else{
+        } else {
           props.setAuthenticated(res.body.data.verified);
           window.localStorage.setItem('jwtToken', res.body.data.token);
           // window.location.reload();
@@ -56,26 +56,26 @@ export default function Login(props) {
 
       })
     return false;
-  } 
+  }
 
   $('#login-form').submit(async function (e) {
-    e.preventDefault() 
+    e.preventDefault()
     // await submitHandler({email,firstName,lastName,password, address,payment});
     return false;
-   });
+  });
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Typography variant="h4" spacing = {2}>
+        <Typography variant="h4" spacing={2}>
           Login
         </Typography>
         {(error) ? <Alert className={classes.alert} severity="error">Login Unsuccessful</Alert> : null}
 
-        <form id = 'login-form' className={classes.form} noValidate onSubmit = {() => submitHandler({email, password})}>
+        <form id='login-form' className={classes.form} noValidate onSubmit={() => submitHandler({ email, password })}>
           <Grid container spacing={2}>
-            
-      
+
+
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -85,7 +85,7 @@ export default function Login(props) {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-                onChange = {(e) => {setEmail(e.target.value)}}
+                onChange={(e) => { setEmail(e.target.value) }}
 
               />
             </Grid>
@@ -99,7 +99,7 @@ export default function Login(props) {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                onChange = {(e) => {setPassword(e.target.value)}}
+                onChange={(e) => { setPassword(e.target.value) }}
 
               />
             </Grid>
@@ -111,8 +111,8 @@ export default function Login(props) {
             color="primary"
             className={classes.submit}
           >
-              Login
-          </Button> 
+            Login
+          </Button>
         </form>
       </div>
     </Container>
