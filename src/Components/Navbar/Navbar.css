@@ -1,5 +1,5 @@
 .navbar{
-  background-color: #3a3a3a !important
+  background-color: #FFFF !important
 }
 
 .navbar-body{
@@ -58,12 +58,12 @@
   text-decoration: none;
   font-size: x-large;
   margin: 15px;
-  color: white;
+  color: black;
   outline: none;
 }
 
 .navbar-link :hover{
-  color: #00E3AA;
+  color: #F69E20;
 }
 
 /* .navbar-logo {
