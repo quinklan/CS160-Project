@@ -1,5 +1,4 @@
 import React from 'react';
-import DefaultNavbar from './DefaultNavbar';
 import MemberNavbar from './MemberNavbar';
 
 const NavbarWrapper = ({
@@ -14,8 +13,6 @@ const NavbarWrapper = ({
   const getNavBar = (verified) =>{
     if(verified){
       return <MemberNavbar  {...appProps} handleLogout={handleLogout}/>;
-    }else{
-      return <DefaultNavbar handleLogout={handleLogout}/>;
     }
   }
   return (
