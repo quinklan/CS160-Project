@@ -5,6 +5,7 @@ import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
 import Main from './Pages/Main/Main';
 import Account from './Pages/Account/Account';
+import Favorites from './Pages/Favorites/Favorites';
 export default function Routing({appProps}){
   const signedInRoutes = [
     {
@@ -32,7 +33,11 @@ export default function Routing({appProps}){
     {
       Component: SignUp,
       path: '/signup'
-    }
+    },
+    {
+      Component: Favorites,
+      path: '/favorites'
+    },
   ] 
 
     return (

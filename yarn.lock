@@ -2745,7 +2745,7 @@
   "resolved" "https://registry.npmjs.org/axe-core/-/axe-core-4.1.2.tgz"
   "version" "4.1.2"
 
-"axios@^0.21.1":
+"axios@^0.21.4":
   "integrity" "sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg=="
   "resolved" "https://registry.npmjs.org/axios/-/axios-0.21.4.tgz"
   "version" "0.21.4"
@@ -10225,7 +10225,7 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.12.0.tgz"
   "version" "16.12.0"
 
-"react-rainbow-components@^1.25.0":
+"react-rainbow-components@^1.29.0":
   "integrity" "sha512-vGmA1XrecXsad6XQTEz/5kFwPJClkOOLsADQchgkgq7btZPPT5PuRVwJXsrqLLPja0g2HiMOh8m7QlbVJd5Q2Q=="
   "resolved" "https://registry.npmjs.org/react-rainbow-components/-/react-rainbow-components-1.29.0.tgz"
   "version" "1.29.0"
