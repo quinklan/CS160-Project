@@ -3,15 +3,10 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema(
   {
-    firstName:{
-      type:String,
-      required: true
-    },
-    lastName:{
+    name:{
       type: String,
       required: true
     },
-
     email:{
       type: String,
       required: true
@@ -19,22 +14,7 @@ const UserSchema = new Schema(
     password:{
       type: String,
       required: true
-    },
-    address:{
-      type: String,
-      required: true
-    },
-    payment:{
-      type: String,
-      required: true
-    },
-    listings:{
-      type: [Schema.Types.ObjectId],
-    },
-    bought: [
-      {type: [Schema.Types.ObjectId]}
-    ]
-    
+    }    
   }
 )
 

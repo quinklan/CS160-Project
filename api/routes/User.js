@@ -80,8 +80,7 @@ router.post('/login', (req, res) => {
         if(bcrypt.compareSync(req.body.password, user.password)){
           const userToBeSigned = {
             id: user._id,
-            firstName: user.firstName,
-            lastName: user.lastName,
+            name: user.name,
             email: user.email,
 
           };
