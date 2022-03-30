@@ -1,0 +1,10 @@
+.listing-faviorite{
+    fill: white !important;
+    stroke: black;
+    stroke-width: 2;
+}
+
+.listing-faviorite :hover{
+    fill: red;
+    cursor: pointer;
+}
