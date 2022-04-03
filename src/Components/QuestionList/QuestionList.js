@@ -114,9 +114,16 @@ export default function QuestionList() {
               onChange={(e) => setCuisine(e.target.value)}
               input={<OutlinedInput label="Choose Cuisine Type" />}
             >
+              <MenuItem value={"Thai"}>Thai</MenuItem>
+              <MenuItem value={"Indian"}>Indian</MenuItem>
               <MenuItem value={"Chinese"}>Chinese</MenuItem>
-              <MenuItem value={"French"}>French</MenuItem>
+              <MenuItem value={"Italian"}>Italian</MenuItem>
+              <MenuItem value={"Mexican"}>Mexican</MenuItem>
               <MenuItem value={"Japanese"}>Japanese</MenuItem>
+              <MenuItem value={"American"}>American</MenuItem>
+              <MenuItem value={"French"}>French</MenuItem>
+              <MenuItem value={"Korean"}>Korean</MenuItem>
+              <MenuItem value={"Mediterranean"}>Mediterranean</MenuItem>
             </Select>
           </FormControl>
         </React.Fragment>
