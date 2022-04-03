@@ -53,7 +53,7 @@ export default function Login(props) {
         props.setAuthenticated(res.body.data.verified);
         window.localStorage.setItem("jwtToken", res.body.data.token);
         // window.location.reload();
-        window.location.href = "/main";
+        window.location.href = "/home";
       }
     });
     return false;
