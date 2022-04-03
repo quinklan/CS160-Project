@@ -22,7 +22,7 @@ const ProfileDropdown = (props) => {
                 <li className= "profile-drop-header">
                     <div>
                         <p>
-                          {props.user.firstName + ' ' + props.user.lastName} 
+                          {props.user.name} 
                         </p>
                         <p className = 'profile-drop-email'>
                           {props.user.email}

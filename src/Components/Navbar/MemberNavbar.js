@@ -15,12 +15,7 @@ const MemberNavbar = (props) => {
             <Typography  style = {{marginLeft: 5, fontSize: 25}}>QuickBite</Typography>
       <div className="navbar-links-container">
         
-        <Link className="navbar-link" to="/SignUp">
-          <Typography variant="h6">Sign Up</Typography>
-        </Link>
-        <Link className="navbar-link" to="/Login">
-          <Typography variant="h6">Login</Typography>
-        </Link>
+       
         <Link className="navbar-link" to="/Login">
           <Typography variant="h6">Trending</Typography>
         </Link>
@@ -30,6 +25,7 @@ const MemberNavbar = (props) => {
         <Link className="navbar-link" to="/Login">
           <Typography variant="h6">Personal Reviews</Typography>
         </Link>
+        <ProfileDropdown {...props}/>
       </div>
     </Toolbar>
   </AppBar>

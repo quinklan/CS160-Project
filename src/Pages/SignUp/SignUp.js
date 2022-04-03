@@ -3,7 +3,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
+import {Link} from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -39,15 +39,12 @@ const useStyles = makeStyles((theme) => ({
 export default function Signup(){
   const classes = useStyles();
   const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
-  const [address, setAddress] = useState("hi");
-  const [payment, setPayment] = useState("bye");
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+
   const submitHandler = async (user) => {
     createUser(user).then((res) => {
       setError(res.error);
@@ -65,7 +62,8 @@ export default function Signup(){
               Sign Up
             </Typography>
           </Grid>
-          
+          {(error) ? <Alert className={classes.alert} severity="error">Account Creation Unsuccessful</Alert> : null}
+         {(success) ? <Alert className={classes.alert} severity="success">Account Creation Successful</Alert> : null}
           <Grid item xs={12}>
             <TextField
               className={classes.field}
@@ -118,13 +116,14 @@ export default function Signup(){
                 variant="contained"
                 color="primary"
                 className={classes.submit}
+                onClick = {() => submitHandler({email,name,password})}
               >
                 Create Account
               </Button>
             </Grid>
             <Grid container justify="center">
               <Grid item>
-                <Link variant="body2" to="/Login" color = "white">
+                <Link variant="body2" to="/Login"  style = {{textDecoration: 'none', color: 'white'}}>
                   Already have an account? Log in.
                 </Link>
               </Grid>

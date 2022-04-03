@@ -3,7 +3,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
+import {Link} from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -14,7 +14,6 @@ import { login } from "../../ApiFunctions/User";
 import $ from "jquery";
 import { green } from "@material-ui/core/colors";
 import Landing from "../../Components/Landing/Landing";
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     height: "100%",
@@ -47,7 +46,8 @@ export default function Login(props) {
 
   const submitHandler = async (user) => {
     login(user).then((res) => {
-      if (res.error) {
+      console.log(res.body.data, !res.body.data)
+      if (res.error || !res.body.data) {
         setError(true);
       } else {
         props.setAuthenticated(res.body.data.verified);
@@ -72,6 +72,7 @@ export default function Login(props) {
           Login
         </Typography>
       </Grid>
+      {(error) ? <Alert className={classes.alert} severity="error">Login Unsuccessful</Alert> : null }
       <Grid item xs={12}>
           <TextField
               className={classes.field}
@@ -97,31 +98,34 @@ export default function Login(props) {
               label="Password"
               name="password"
               autoComplete="password"
+              type = 'password'
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
             />
         <Grid item xs={12}>
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
+            onClick = {() => submitHandler({email, password})}
             className={classes.submit}
+
           >
             Login
           </Button>
         </Grid>
         <Grid item xs={12}>
-          <Button
-            //type="submit"
-            fullWidth
-            variant="contained"
-            color="secondary"
-            //className={classes.submit}
-          >
-            Signup
-          </Button>
+          <Link to = '/signup' style = {{textDecoration: 'none'}}>
+            <Button
+              fullWidth
+              variant="contained"
+              color="secondary"
+              className={classes.submit}
+            >
+              Signup
+            </Button>
+          </Link>
         </Grid>
       </Grid>
     
