@@ -94,7 +94,7 @@ export default function QuestionList() {
               setDistance(val);
             }}
           ></Slider>
-          <Typography style={{ fontSize: 30 }}>
+          <Typography style={{ fontSize: 27 }}>
             {distance + " miles   "}
           </Typography>
         </React.Fragment>
@@ -140,7 +140,7 @@ export default function QuestionList() {
           <ButtonGroup
             variant="outlined"
             aria-label="outlined button group"
-            style={{ width: "75%" }}
+            style={{ width: "75%", marginTop: "1.5%" }}
           >
             <Button
               style={{
