@@ -1,0 +1,8 @@
+ .question-card{
+    background: #FFFFFF;
+    position: absolute;
+    top: 50%;
+    width: 80%;
+    transform: translateY(-45%) translateX(12%);
+    border-radius: 20px;
+}
