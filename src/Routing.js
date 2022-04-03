@@ -9,11 +9,11 @@ import Account from './Pages/Account/Account';
 
 export default function Routing({appProps}){
   const signedInRoutes = [
-    // {
-    //   Component: Home,
-    //   path: '/home',
-    //   redirect: '/login'
-    // },
+    {
+      Component: Home,
+      path: '/home',
+      redirect: '/login'
+    },
     {
       Component:Account,
       path: '/account',
@@ -29,16 +29,11 @@ export default function Routing({appProps}){
     {
       Component: Login,
       path: "/login",
-      redirect: '/main',
     },
     {
       Component: SignUp,
       path: '/signup'
     },
-    {
-      Component: Home,
-      path: '/home'
-    }
   ] 
 
     return (
