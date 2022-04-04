@@ -1,3 +1,4 @@
+
 .profile-menu {
   margin-right: 10px;
   position: relative;
@@ -16,7 +17,7 @@
   color: black;
   font-size: x-large;
   width: 100%;
-  background-color: black;
+  background-color: #1de9b6;
 }
 .admin-link span{
   justify-content: left;
@@ -41,7 +42,9 @@
   background-color: white;
   
 }
-
+.eSHoy{
+  margin: 10 !important
+}
 .iqOUcR{
   min-width: 12rem;
 }
@@ -66,6 +69,6 @@
 }
 
 .profile-drop-email{
-  color:  #f69e20!important;
+  color: #3fb497 !important;
 
 }
