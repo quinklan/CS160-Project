@@ -16,6 +16,8 @@ import "./QuestionList.css";
 import { OutlinedInput } from "@mui/material";
 import RestaurantListing from "../RestaurantListing/RestaurantListing";
 import axios from "axios";
+import { BorderColor } from "@material-ui/icons";
+import { SxProps } from '@mui/material/styles';
 
 // function increaseQuestionIndex() {
 //   setQuestionIndex(++1)
@@ -25,15 +27,30 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: 200,
   },
-  select: {
-    "&:before": {
-      borderColor: "#FE5858",
-    },
-    "&:after": {
-      borderColor: "#FE5858",
-    },
-  },
+  // select: {
+  //   "&:before": {
+  //     borderColor: 'red',
+  //   },
+  //   "&:after": {
+  //     borderColor: 'red',
+  //   },
+  //   '.MuiOutlinedInput-notchedOutline': {
+  //     borderColor: 'red',
+  //   },
+  //   '&:hover .MuiOutlinedInput-notchedOutline': {
+  //     // borderColor: '#f69e20',
+  //     borderWidth: '0.15rem',
+  //     color: 'red',
+  //     borderColor: "red",
+  //     // backgroundColor: 'red',
+  //   },
+  //   "&$focused $notchedOutline": {
+  //     borderColor: 'red',
+  //     borderWidth: '0.15rem',
+  //   },
+  // },
 }));
+
 export default function QuestionList() {
   const classes = useStyles();
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -76,10 +93,9 @@ export default function QuestionList() {
         
       })
       .catch((err) => {
-      console.log ('error')
-      })
-    
-  }
+        console.log("error");
+      });
+  };
 
   const questions = [
     {
@@ -106,7 +122,7 @@ export default function QuestionList() {
         <React.Fragment>
           {/* <FormControl> */}
           <FormControl style={{ width: "40%", marginTop: "2%" }}>
-            <InputLabel id="demo-simple-select-label" style={{}}>
+            <InputLabel id="demo-simple-select-label">
               Choose Cuisine Type
             </InputLabel>
             <Select
@@ -245,7 +261,7 @@ export default function QuestionList() {
             fontSize: 20,
             padding: 13,
           }}
-          onClick = {() => getResults()}
+          onClick={() => getResults()}
         >
           Search
         </Button>

@@ -28,6 +28,7 @@ export default function Routing({appProps}){
     },
     {
       Component: Account,
+      Component:Account,
       path: '/account',
       redirect: '/login'
     },
