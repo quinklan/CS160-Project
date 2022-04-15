@@ -29,6 +29,7 @@ function distance(lat1, lon1, lat2, lon2) {
 }
 
 export default function RestaurantListing(props) {
+    console.log(props)
   return (
     <Grid container spacing={2}>
       <Grid item xs={5}>
@@ -51,14 +52,12 @@ export default function RestaurantListing(props) {
       ) : (
         <Grid item xs={7}>
           <Grid container>
-            <Grid item xs={10}>
+            <Grid item xs={12}>
               <Typography variant="h4">{props.restaurantTitle}</Typography>
             </Grid>
-            <Grid item xs={2}>
-              {/* <Button> */}
+            {/* <Grid item xs={2}>
               <FavoriteIcon className="listing-favorite" />
-              {/* </Button> */}
-            </Grid>
+            </Grid> */}
             <Grid item xs={12} style={{ color: "grey" }}>
               <Typography variant="h6">{props.address}</Typography>
             </Grid>
@@ -86,7 +85,7 @@ export default function RestaurantListing(props) {
                           fontWeight: "bold",
                         }}
                       >
-                        {tag}
+                        {tag.title}
                       </Typography>
                     </Grid>
                   );
