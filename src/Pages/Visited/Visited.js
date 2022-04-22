@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import { createUser } from "../../ApiFunctions/User";
-import "./Notes.css";
+import "./Visited.css";
 import QuestionList from "../../Components/QuestionList/QuestionList";
 import QuestionCard from "../../Components/QuestionCard/QuestionCard";
 import { Button, TextField, Typography } from "@material-ui/core";
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Notes() {
+export default function Visited() {
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");

@@ -16,13 +16,13 @@ const MemberNavbar = (props) => {
       <div className="navbar-links-container">
         
        
-        <Link className="navbar-link" to="/Login">
+        <Link className="navbar-link" to="/home">
           <Typography variant="h6">Trending</Typography>
         </Link>
-        <Link className="navbar-link" to="/Login">
+        <Link className="navbar-link" to="/home">
           <Typography variant="h6">Favorites</Typography>
         </Link>
-        <Link className="navbar-link" to="/Login">
+        <Link className="navbar-link" to="/home">
           <Typography variant="h6">Personal Reviews</Typography>
         </Link>
         <ProfileDropdown {...props}/>
