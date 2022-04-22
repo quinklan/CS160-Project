@@ -10,7 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Alert } from "@material-ui/lab/";
 import { createUser } from "../../ApiFunctions/User";
-import './landing.css'
+import "./landing.css";
 import $ from "jquery";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(2, 0, 0),
   },
   field: {
-    background: "#FFFFFF"
+    background: "#FFFFFF",
   },
 }));
 
@@ -41,27 +41,42 @@ export default function Landing(props) {
   return (
     <React.Fragment>
       <CssBaseline />
-      <div className= 'background'>
-          <Grid container spacing={2} xs={12} style = {{paddingTop: 30, margin: 0, height: '-webkit-fill-available'}}>
-            <Grid item xs={5} style={{ color: "#FFFFFF", alignSelf:'center' }}>
+      <div className="background">
+        <Grid
+          container
+          spacing={2}
+          xs={12}
+          style={{
+            paddingTop: 30,
+            margin: 0,
+            height: "-webkit-fill-available",
+          }}
+        >
+          <Grid item xs={5} style={{ color: "#FFFFFF", alignSelf: "center" }}>
             <Grid container spacing={2}>
-                <Grid item xs={12} align="center" style = {{alignSelf:'center'}}>
-                    <img src="/profile-1.png" height="20%" width="20%" />
-                </Grid>
-                <Grid item xs={12} align="center" style = {{paddingTop:0}}>
-                    <Typography variant="h3">QuickBite</Typography>
-                
-                </Grid>
-                {props.children}
-              
+              <Grid item xs={12} align="center" style={{ alignSelf: "center" }}>
+                <img src="/profile-1.png" height="20%" width="20%" />
+              </Grid>
+              <Grid item xs={12} align="center" style={{ paddingTop: 0 }}>
+                <Typography variant="h3">QuickBite</Typography>
+              </Grid>
+              {props.children}
             </Grid>
-            <Grid item xs={7} width="100%" style = {{padding: 0}}>
-                <img src="/login_image.png" style = {{float:"right", position: 'absolute', right:0, bottom: 0, height: '90%'}} />
+            <Grid item xs={7} width="100%" style={{ padding: 0 }}>
+              <img
+                src="/login_image.png"
+                style={{
+                  float: "right",
+                  position: "absolute",
+                  right: 0,
+                  bottom: 0,
+                  height: "90%",
+                }}
+              />
             </Grid>
           </Grid>
-          </Grid>
+        </Grid>
       </div>
     </React.Fragment>
   );
 }
-

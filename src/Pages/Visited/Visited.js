@@ -4,8 +4,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { createUser } from "../../ApiFunctions/User";
 import "./Visited.css";
 import QuestionList from "../../Components/QuestionList/QuestionList";
-import QuestionCard from "../../Components/QuestionCard/QuestionCard";
+import ListingCard from "../../Components/ListingCard/ListingCard";
 import { Button, TextField, Typography } from "@material-ui/core";
+import RestaurantListing from "../../Components/RestaurantListing/RestaurantListing";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -40,76 +41,43 @@ export default function Visited() {
 
   return (
     <React.Fragment>
-      <div className="notes-background">
+      <div className="visited-background">
         <Grid
           container
           spacing={3}
           xs={12}
           style={{
-            // paddingTop: 30,
             margin: 0,
-            // height: "-webkit-fill-available",
-            width: "80%"
+            width: "90%",
           }}
-          className="notes-card"
+          className="visited-card"
         >
-          <Grid item xs={1}>
-            <Button
-              // className="back-button"
-              style={{
-                color: "white",
-                backgroundColor: "#979DA4",
-                borderRadius: 10,
-                float: "left",
-                fontSize: 20,
-                padding: 13,
-                // marginBottom: "2%",
-              }}
-              fullWidth
-            >
-              BACK
-            </Button>
-          </Grid>
-          <Grid item xs={11}></Grid>
-          <Grid item xs={1}></Grid>
-          <Grid item xs={11}>
-            <Typography style={{ fontSize: 40 }}>
-              The Counter Cupertino
-            </Typography>
-          </Grid>
-          <Grid item xs={1}></Grid>
-          <Grid item xs={11}>
-            <Typography style={{ fontSize: 30 }}>Notes:</Typography>
-          </Grid>
-          <Grid item xs={1}></Grid>
-          <Grid item xs={11}>
-            <TextField
-              style={{ width: "95%", backgroundColor: "#E5E5E5", borderRadius: 15}}
-              inputProps={{style:{fontSize:25, padding: 10}}}
-              InputProps = {{disableUnderline:true}}
-              rows={12}
-              multiline
-              backgroundColor = "#E5E5E5"
-            ></TextField>
-          </Grid>
-          <Grid item xs= {11}></Grid>
-          <Grid item xs={1}>
-          <Button
-            // className="back-button"
-            style={{
-              color: "white",
-              backgroundColor: "#5AA1FF",
-              borderRadius: 10,
-              float: "right",
-              right: "70%",
-              fontSize: 20,
-              padding: 13,
-            //   marginTop: "2%",
-            }}
-          >
-            Save
-          </Button>
-          </Grid>
+          <ListingCard>
+            <Grid item xs={12} align="center">
+              <Typography style={{ fontSize: 40 }}>
+                Generated Restaurants
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              {/* <RestaurantListing></RestaurantListing> */}
+              <RestaurantListing
+                image="https://media-cdn.tripadvisor.com/media/photo-s/11/4a/b8/61/a-burger-for-every-lifestyle.jpg"
+                restaurantTitle="The Counter"
+                address="20800 Stevens Creek Blvd"
+                rating={2.5}
+                tags={["Bars", "Burgers", "Sandwiches"]}
+              />
+              <RestaurantListing
+                image="https://s3-media2.fl.yelpcdn.com/bphoto/Q7ErHze2LxTdmuKSYq94jQ/o.jpg"
+                restaurantTitle="The Counter"
+                description="This food here is great! However, the customer service here is terrible. I had to wait an HOUR before I got my food."
+                rating={2.5}
+                tags={["Bars", "Burgers", "Sandwiches"]}
+                review
+              />
+            </Grid>
+            <Grid item xs={3}></Grid>
+          </ListingCard>
         </Grid>
       </div>
     </React.Fragment>
