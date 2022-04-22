@@ -40,7 +40,7 @@ const Account = (props) => {
   }
 
   useEffect(async() => {
-    await getUserListings();
+    // await getUserListings();
     
   }, [])
 

@@ -6,6 +6,7 @@ import SignUp from './Pages/SignUp/SignUp';
 import Main from './Pages/Main/Main';
 import Home from './Pages/Home/Home';
 import Notes from './Pages/Notes/Notes';
+import Visited from './Pages/Visited/Visited';
 import Account from './Pages/Account/Account';
 
 export default function Routing({appProps}){
@@ -21,7 +22,12 @@ export default function Routing({appProps}){
       redirect: '/login'
     },
     {
-      Component:Account,
+      Component: Visited,
+      path: '/visited',
+      redirect: '/login'
+    },
+    {
+      Component: Account,
       path: '/account',
       redirect: '/login'
     },
