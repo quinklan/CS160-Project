@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import { createUser } from "../../ApiFunctions/User";
 import "./Home.css";
 import QuestionList from "../../Components/QuestionList/QuestionList";
 
+import { getUserRestaurants } from "../../ApiFunctions/Restaurants";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -29,7 +30,11 @@ const useStyles = makeStyles((theme) => ({
     background: "#FFFFFF",
   },
 }));
-export default function Home() {
+
+
+
+export default function Home(props) {
+  
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -42,6 +47,13 @@ export default function Home() {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [distance, setDistance] = useState(0);
+
+  // useEffect(async () => {
+  //   let results = await getUserRestaurants(props.user.id);
+  //   console.log(results);
+  
+  // }) 
+
   const submitHandler = async (user) => {
     createUser(user).then((res) => {
       setError(res.error);

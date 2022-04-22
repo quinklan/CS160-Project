@@ -23,8 +23,8 @@ mongoose.connect(DBURL, { useNewUrlParser: true, useUnifiedTopology: true });
 const User = require('./routes/User');
 app.use('/user', User);
  
-const Listing = require('./routes/Listing');
-app.use('/listing', Listing);
+const Restaurant = require('./routes/Restaurant');
+app.use('/restaurant', Restaurant);
 
 app.listen(port,function(){
   console.log('Server is running on port: ' + port);

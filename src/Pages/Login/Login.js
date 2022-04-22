@@ -46,7 +46,6 @@ export default function Login(props) {
 
   const submitHandler = async (user) => {
     login(user).then((res) => {
-      console.log(res.body.data, !res.body.data)
       if (res.error || !res.body.data) {
         setError(true);
       } else {

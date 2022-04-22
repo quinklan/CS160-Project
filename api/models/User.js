@@ -14,7 +14,10 @@ const UserSchema = new Schema(
     password:{
       type: String,
       required: true
-    }    
+    },
+    restaurants:  {
+      type: [Schema.Types.ObjectID]
+    }
   }
 )
 

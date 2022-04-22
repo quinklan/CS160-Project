@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const Restaurant = require('../models/Restaurant');
+
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
@@ -105,13 +107,13 @@ router.post('/getUser',(req,res) => {
   console.log('req', req);
   User.findById(req.body.id) 
     .then((user) => {
-      console.log(user)
       res.status(OK).send(user);
     })
     .catch((error) => {
       res.status(BAD_REQUEST).send(error);
     })
 })
+
 
 
 
