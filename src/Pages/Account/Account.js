@@ -2,47 +2,46 @@ import { Divider, Grid, Typography } from '@material-ui/core';
 
 import React, { useEffect, useState } from 'react';
 import { getUser } from '../../ApiFunctions/User';
-import { getOneListing } from '../../ApiFunctions/Listing';
 
 const Account = (props) => {
-  const [listings, setListing] = useState([]);
-  const [listingsBought, setListingBought] = useState([]);
+  // const [listings, setListing] = useState([]);
+  // const [listingsBought, setListingBought] = useState([]);
 
-  const getUserListings = async() => {
-    let listingObjs = [];
-    let listingBoughtObjs = [];
-    let listingIds = await getUser(props.user.id);
-    let boughtIds = listingIds.data.bought;
+  // const getUserListings = async() => {
+  //   let listingObjs = [];
+  //   let listingBoughtObjs = [];
+  //   let listingIds = await getUser(props.user.id);
+  //   let boughtIds = listingIds.data.bought;
 
-    console.log(boughtIds)
-    listingIds = listingIds.data.listings
+  //   console.log(boughtIds)
+  //   listingIds = listingIds.data.listings
     
 
     
-    const promise = listingIds.map(async(id) => {
-      let listing = await getOneListing(id);
+  //   const promise = listingIds.map(async(id) => {
+  //     let listing = await getOneListing(id);
       
-      listingObjs.push(listing);
-    })
-    const promise2 = boughtIds.map(async(id) => {
-      let listing = await getOneListing(id);
+  //     listingObjs.push(listing);
+  //   })
+  //   const promise2 = boughtIds.map(async(id) => {
+  //     let listing = await getOneListing(id);
       
-      listingBoughtObjs.push(listing);
-    })
-    Promise.all(promise).then(() => {
-      setListing(listingObjs);
-    })
-    Promise.all(promise2).then(() => {
-      setListingBought(listingBoughtObjs);
-    })
+  //     listingBoughtObjs.push(listing);
+  //   })
+  //   Promise.all(promise).then(() => {
+  //     setListing(listingObjs);
+  //   })
+  //   Promise.all(promise2).then(() => {
+  //     setListingBought(listingBoughtObjs);
+  //   })
 
 
-  }
+  // }
 
-  useEffect(async() => {
-    await getUserListings();
+  // useEffect(async() => {
+  //   await getUserListings();
     
-  }, [])
+  // }, [])
 
 
   return(

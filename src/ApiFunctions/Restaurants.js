@@ -1,10 +1,9 @@
 import axios from 'axios';
 
-
-export const getListings = async() => {
+export const getUserRestaurants = async(userID) => {
   let response = {error: false, body: null};
   await axios
-    .get('http://localhost:5000/listing/getListings')
+    .post('http://localhost:5000/restaurant/getUserRestaurants', {userID})
     .then((res) => {
       response.body = res;
     })
@@ -16,10 +15,10 @@ export const getListings = async() => {
   return response;
 }
 
-export const createListing = async(listing) => {
+export const addRestaurant = async(restaurant) => {
   let response = {error: false, body: null};
   await axios
-    .post('http://localhost:5000/listing/createListing', {...listing})
+    .post('http://localhost:5000/restaurant/addRestaurant', {...restaurant})
     .then((res) => {
       response.body = res;
     })
@@ -30,10 +29,10 @@ export const createListing = async(listing) => {
   return response;
 }
 
-export const getOneListing = async(id) => {
+export const editRestaurant = async(newRestaurant) => {
   let response = {error: false, body: null};
   await axios
-    .post('http://localhost:5000/listing/getOneListing', {id})
+    .post('http://localhost:5000/restaurant/editRestaurant', {...newRestaurant})
     .then((res) => {
       response.body = res;
     })

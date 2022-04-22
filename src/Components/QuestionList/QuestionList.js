@@ -254,7 +254,7 @@ export default function QuestionList() {
       : 
       <React.Fragment>
             <Typography style={{ fontSize: 50, marginBottom: "2%", textAlign: 'center' }}>
-              We found a resturant for you!
+              We found a restaurant for you!
             </Typography>
             <IconButton 
               style = {{position: 'absolute', top: '8%', right: '3%', backgroundColor: '#4B87C7'}}
