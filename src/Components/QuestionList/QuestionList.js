@@ -1,7 +1,7 @@
-import { ButtonGroup, Icon, MenuItem, Typography } from "@material-ui/core";
+import { ButtonGroup, Grid, Icon, MenuItem, Typography } from "@material-ui/core";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
-
+import RefreshIcon from '@mui/icons-material/Refresh';
 import FormControl from "@mui/material/FormControl";
 import React, { useState } from "react";
 import QuestionCard from "../QuestionCard/QuestionCard";
@@ -11,8 +11,10 @@ import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 // import FormControl from "@material-ui/core/FormControl";
 // import InputLabel from "@material-ui/core/InputLabel";
 import { makeStyles } from "@material-ui/core/styles";
+import IconButton from '@mui/material/IconButton';
 import "./QuestionList.css";
 import { OutlinedInput } from "@mui/material";
+import RestaurantListing from "../RestaurantListing/RestaurantListing";
 import axios from "axios";
 
 // function increaseQuestionIndex() {
@@ -38,7 +40,8 @@ export default function QuestionList() {
   const [distance, setDistance] = useState(0);
   const [cuisine, setCuisine] = React.useState("");
   const [dollar, setDollar] = useState(1);
-  
+  const [found, setFound] = useState(false);
+  const [restaurant, setRestaurant] = useState({});
   const getCusineCategory = {
     'Thai': 'thai',
     'Indian': 'indpak',
@@ -64,12 +67,13 @@ export default function QuestionList() {
       open_now: true,
       radius: distance * 1609,
       price: dollar,
-    
-
     }
     })
       .then((res) => {
-      console.log(res)
+        let random = Math.floor(Math.random() * res.data.businesses.length);
+        setRestaurant(res.data.businesses[random]);
+        setFound(true);
+        
       })
       .catch((err) => {
       console.log ('error')
@@ -186,7 +190,9 @@ export default function QuestionList() {
   ];
 
   return (
-    <QuestionCard>
+    <QuestionCard align = {(found) ? '' : 'center'}>
+      {(!found) ? 
+      <React.Fragment>
       <Typography style={{ fontSize: 50, marginBottom: "5%" }}>
         Find Restaurant
       </Typography>
@@ -244,6 +250,27 @@ export default function QuestionList() {
           Search
         </Button>
       ) : null}
+      </React.Fragment>
+      : 
+      <React.Fragment>
+            <Typography style={{ fontSize: 50, marginBottom: "2%", textAlign: 'center' }}>
+              We found a resturant for you!
+            </Typography>
+            <IconButton 
+              style = {{position: 'absolute', top: '8%', right: '3%', backgroundColor: '#4B87C7'}}
+              onClick = {() => getResults()}
+            >
+              <RefreshIcon style = {{fontSize: 50, color: 'white'}}/>
+            </IconButton>
+          <RestaurantListing
+              image = {restaurant.image_url}
+              rating = {restaurant.rating}
+              tags = {restaurant.categories}
+              address = {restaurant.location.address1}
+              restaurantTitle = {restaurant.name}
+          />
+      </React.Fragment>
+    }
     </QuestionCard>
   );
 }

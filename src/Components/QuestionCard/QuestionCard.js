@@ -3,7 +3,7 @@ import './QuestionCard.css'
 
 function QuestionCard(props) {
   return (
-    <Grid item xs={12} align="center" className="question-card" style = {{padding: 20}}>
+    <Grid item xs={12} align = {props.align} className="question-card" style = {{padding: 20}}>
       {props.children}
     </Grid>
   );
