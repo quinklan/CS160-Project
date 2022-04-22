@@ -54,8 +54,8 @@ export default function Visited() {
         >
           <ListingCard>
             <Grid item xs={12} align="center">
-              <Typography style={{ fontSize: 40 }}>
-                Generated Restaurants
+              <Typography style={{ fontSize: 40, marginBottom: "2%" }}>
+                Visited Restaurants
               </Typography>
             </Grid>
             <Grid item xs={12}>
@@ -64,17 +64,20 @@ export default function Visited() {
                 image="https://media-cdn.tripadvisor.com/media/photo-s/11/4a/b8/61/a-burger-for-every-lifestyle.jpg"
                 restaurantTitle="The Counter"
                 address="20800 Stevens Creek Blvd"
-                rating={2.5}
-                tags={["Bars", "Burgers", "Sandwiches"]}
-              />
-              <RestaurantListing
-                image="https://s3-media2.fl.yelpcdn.com/bphoto/Q7ErHze2LxTdmuKSYq94jQ/o.jpg"
-                restaurantTitle="The Counter"
                 description="This food here is great! However, the customer service here is terrible. I had to wait an HOUR before I got my food."
                 rating={2.5}
                 tags={["Bars", "Burgers", "Sandwiches"]}
                 review
-              />
+              ></RestaurantListing>
+              <RestaurantListing
+                image="https://s3-media2.fl.yelpcdn.com/bphoto/Q7ErHze2LxTdmuKSYq94jQ/o.jpg"
+                restaurantTitle="The Counter"
+                address="20800 Stevens Creek Blvd"
+                description="This food here is great! However, the customer service here is terrible. I had to wait an HOUR before I got my food."
+                rating={2.5}
+                tags={["Bars", "Burgers", "Sandwiches"]}
+                review
+              ></RestaurantListing>
             </Grid>
             <Grid item xs={3}></Grid>
           </ListingCard>
