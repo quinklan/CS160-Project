@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   // },
 }));
 
-export default function QuestionList() {
+export default function QuestionList(props) {
   const classes = useStyles();
   const [questionIndex, setQuestionIndex] = useState(0);
   const [distance, setDistance] = useState(0);
@@ -66,14 +66,14 @@ export default function QuestionList() {
     'Italian': 'italian',
     'Mexican': 'mexican',
     'Japanese': 'japanese',
-    'American': 'newamerican, tradamerican',
+    'American': 'tradamerican',
     'French': 'french',
     'Korean': 'korean', 
     'Mediterranean': 'mediterranean'
   }
   
   const getResults = () => {
-    axios.get(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?`, {
+    axios.get(`https://radiant-ocean-98981.herokuapp.com/https://api.yelp.com/v3/businesses/search?`, {
       headers: {
         Authorization: `Bearer R_NfHZkf-x2LiKEKtJ7hU2FHZbmM2exfFsNO1etgf6NAgisNoVBBdPnWJnFIYhGZRoEHc81zQaMDFwk95Ye2ny9SEkX9iEaSbp1Pfynkgb6kEQcxxygpwa-ivuBAYnYx`
     },
@@ -279,11 +279,13 @@ export default function QuestionList() {
               <RefreshIcon style = {{fontSize: 50, color: 'white'}}/>
             </IconButton>
           <RestaurantListing
-              image = {restaurant.image_url}
+              user = {props.user}
+              image = {(restaurant.image_url) ? restaurant.image_url : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png"}
               rating = {restaurant.rating}
               tags = {restaurant.categories}
               address = {restaurant.location.address1}
               restaurantTitle = {restaurant.name}
+              id  = {restaurant.id}
           />
       </React.Fragment>
     }

@@ -6,7 +6,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./restaurant-listing.css";
 import EditIcon from "@mui/icons-material/Edit";
 import Button from "@material-ui/core/Button";
-
+import {addRestaurant} from '../../ApiFunctions/Restaurants';
 //Source: https://www.geodatasource.com/developers/javascript
 
 function distance(lat1, lon1, lat2, lon2) {
@@ -33,14 +33,15 @@ function distance(lat1, lon1, lat2, lon2) {
 export default function RestaurantListing(props) {
   console.log(props);
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={5}>
-        <img
-          src={props.image}
-          style={{ objectFit: "cover", width: "100%", height: 200 }}
-        ></img>
-      </Grid>
-      {/* {props.review ? (
+    <React.Fragment>
+      <Grid container spacing={2}>
+        <Grid item xs={5}>
+          <img
+            src={props.image}
+            style={{ objectFit: "cover", width: "100%", height: 200 }}
+          ></img>
+        </Grid>
+        {/* {props.review ? (
         <Grid item xs={7}>
           <Grid container>
             <Grid item xs={10}>
@@ -55,110 +56,153 @@ export default function RestaurantListing(props) {
           </Grid>
         </Grid>
       ) : ( */}
-      {props.review ? (
-        <Grid item xs={7}>
-          <Grid container>
-            <Grid item xs={11}>
-              <Typography variant="h4">{props.restaurantTitle}</Typography>
-            </Grid>
-            <Grid item xs={1}>
-              <Button>
-                <EditIcon></EditIcon>
-              </Button>
-            </Grid>
-            <Grid item xs={12} style={{ color: "grey" }}>
-              <Typography variant="h6">{props.address}</Typography>
-            </Grid>
-            <Grid item xs={12} style={{ color: "grey" }}>
-              <Typography variant="h6">
-                <Rating value={props.rating} precision={0.5} readOnly />
-              </Typography>
-            </Grid>
-            <Grid item xs={12} style={{ color: "grey" }}>
-              <Grid container spacing={2}>
-                {props.tags.map((tag) => {
-                  return (
-                    <Grid
-                      item
-                      style={{
-                        backgroundColor: "lightGrey",
-                        margin: 3,
-                        borderRadius: 5,
-                      }}
-                    >
-                      <Typography
-                        style={{
-                          color: "black",
-                          fontSize: 13,
-                          fontWeight: "bold",
-                        }}
-                      >
-                        {tag.title}
-                      </Typography>
-                    </Grid>
-                  );
-                })}
+        {props.review ? (
+          <Grid item xs={7}>
+            <Grid container>
+              <Grid item xs={11}>
+                <Typography variant="h4">{props.restaurantTitle}</Typography>
               </Grid>
-              <Grid item xs={12}>
-                <Typography variant="h6" style={{ color: "black" }}>
-                  Notes:
-                </Typography>
-                {/* <Typography style={{ fontSize: 40, marginBottom: "2%" }}>
-                Notes:
-              </Typography> */}
+              <Grid item xs={1}>
+                <Button>
+                  <EditIcon></EditIcon>
+                </Button>
               </Grid>
               <Grid item xs={12} style={{ color: "grey" }}>
-                <Typography variant="h6">{props.description}</Typography>
+                <Typography variant="h6">{props.address}</Typography>
               </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      ) : (
-        <Grid item xs={7}>
-          <Grid container>
-            <Grid item xs={12}>
-              <Typography variant="h4">{props.restaurantTitle}</Typography>
-            </Grid>
-            {/* <Grid item xs={2}>
-              <FavoriteIcon className="listing-favorite" />
-            </Grid> */}
-            <Grid item xs={12} style={{ color: "grey" }}>
-              <Typography variant="h6">{props.address}</Typography>
-            </Grid>
-            <Grid item xs={12} style={{ color: "grey" }}>
-              <Typography variant="h6">
-                <Rating value={props.rating} precision={0.5} readOnly />
-              </Typography>
-            </Grid>
-            <Grid item xs={12} style={{ color: "grey" }}>
-              <Grid container spacing={2}>
-                {props.tags.map((tag) => {
-                  return (
-                    <Grid
-                      item
-                      style={{
-                        backgroundColor: "lightGrey",
-                        margin: 3,
-                        borderRadius: 5,
-                      }}
-                    >
-                      <Typography
+              <Grid item xs={12} style={{ color: "grey" }}>
+                <Typography variant="h6">
+                  <Rating value={props.rating} precision={0.5} readOnly />
+                </Typography>
+              </Grid>
+              <Grid item xs={12} style={{ color: "grey" }}>
+                <Grid container spacing={2}>
+                  {props.tags.map((tag) => {
+                    return (
+                      <Grid
+                        item
                         style={{
-                          color: "black",
-                          fontSize: 13,
-                          fontWeight: "bold",
+                          backgroundColor: "lightGrey",
+                          margin: 3,
+                          borderRadius: 5,
                         }}
                       >
-                        {tag.title}
-                      </Typography>
-                    </Grid>
-                  );
-                })}
+                        <Typography
+                          style={{
+                            color: "black",
+                            fontSize: 13,
+                            fontWeight: "bold",
+                          }}
+                        >
+                          {tag.title}
+                        </Typography>
+                      </Grid>
+                    );
+                  })}
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="h6" style={{ color: "black" }}>
+                    Notes:
+                  </Typography>
+                  {/* <Typography style={{ fontSize: 40, marginBottom: "2%" }}>
+                Notes:
+              </Typography> */}
+                </Grid>
+                <Grid item xs={12} style={{ color: "grey" }}>
+                  <Typography variant="h6">{props.description}</Typography>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
+        ) : (
+          <Grid item xs={7}>
+            <Grid container>
+              <Grid item xs={12}>
+                <Typography variant="h4">{props.restaurantTitle}</Typography>
+              </Grid>
+              {/* <Grid item xs={2}>
+              <FavoriteIcon className="listing-favorite" />
+            </Grid> */}
+              <Grid item xs={12} style={{ color: "grey" }}>
+                <Typography variant="h6">{props.address}</Typography>
+              </Grid>
+              <Grid item xs={12} style={{ color: "grey" }}>
+                <Typography variant="h6">
+                  <Rating value={props.rating} precision={0.5} readOnly />
+                </Typography>
+              </Grid>
+              <Grid item xs={12} style={{ color: "grey" }}>
+                <Grid container spacing={2}>
+                  {props.tags.map((tag) => {
+                    return (
+                      <Grid
+                        item
+                        style={{
+                          backgroundColor: "lightGrey",
+                          margin: 3,
+                          borderRadius: 5,
+                        }}
+                      >
+                        <Typography
+                          style={{
+                            color: "black",
+                            fontSize: 13,
+                            fontWeight: "bold",
+                          }}
+                        >
+                          {tag.title}
+                        </Typography>
+                      </Grid>
+                    );
+                  })}
+                </Grid>
+                {/* <Grid item xs={1}>
+                  <Button>
+                    <EditIcon></EditIcon>
+                  </Button>
+                </Grid> */}
+              </Grid>
+            </Grid>
+          </Grid>
+        )}
+      </Grid>
+      <Grid container>
+        <Grid item xs={7} />
+        <Grid item xs={2}>
+          <Button
+            // className="back-button"
+            style={{
+              color: "white",
+              backgroundColor: "#979DA4",
+              borderRadius: 10,
+              // float: "right",
+              fontSize: 20,
+              padding: 10,
+            }}
+          >
+            Restart
+          </Button>
         </Grid>
-      )}
-    </Grid>
+        <Grid item xs={2}>
+          <Button
+            // className="back-button"
+            style={{
+              color: "white",
+              backgroundColor: "#FD804B",
+              borderRadius: 10,
+              right: "35%",
+              // float: "right",
+              fontSize: 20,
+              padding: 10,
+            }}
+            onClick = {() => {
+              addRestaurant({userID: props.user.id, url: props.id})
+            }}
+          >
+            Dine Here!
+          </Button>
+        </Grid>
+      </Grid>
+    </React.Fragment>
   );
 }

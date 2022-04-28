@@ -66,7 +66,7 @@ export default function Visited() {
                 address="20800 Stevens Creek Blvd"
                 description="This food here is great! However, the customer service here is terrible. I had to wait an HOUR before I got my food."
                 rating={2.5}
-                tags={["Bars", "Burgers", "Sandwiches"]}
+                tags={[{title: "Bars"}, {title: "Burgers"}, {title: "Sandwiches"}]}
                 review
               ></RestaurantListing>
               <RestaurantListing
@@ -75,7 +75,7 @@ export default function Visited() {
                 address="20800 Stevens Creek Blvd"
                 description="This food here is great! However, the customer service here is terrible. I had to wait an HOUR before I got my food."
                 rating={2.5}
-                tags={["Bars", "Burgers", "Sandwiches"]}
+                tags={[{title: "Bars"}, {title: "Burgers"}, {title: "Sandwiches"}]}
                 review
               ></RestaurantListing>
             </Grid>
