@@ -16,6 +16,8 @@ import "./QuestionList.css";
 import { OutlinedInput } from "@mui/material";
 import RestaurantListing from "../RestaurantListing/RestaurantListing";
 import axios from "axios";
+import { BorderColor } from "@material-ui/icons";
+import { SxProps } from '@mui/material/styles';
 
 // function increaseQuestionIndex() {
 //   setQuestionIndex(++1)
@@ -25,16 +27,31 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: 200,
   },
-  select: {
-    "&:before": {
-      borderColor: "#FE5858",
-    },
-    "&:after": {
-      borderColor: "#FE5858",
-    },
-  },
+  // select: {
+  //   "&:before": {
+  //     borderColor: 'red',
+  //   },
+  //   "&:after": {
+  //     borderColor: 'red',
+  //   },
+  //   '.MuiOutlinedInput-notchedOutline': {
+  //     borderColor: 'red',
+  //   },
+  //   '&:hover .MuiOutlinedInput-notchedOutline': {
+  //     // borderColor: '#f69e20',
+  //     borderWidth: '0.15rem',
+  //     color: 'red',
+  //     borderColor: "red",
+  //     // backgroundColor: 'red',
+  //   },
+  //   "&$focused $notchedOutline": {
+  //     borderColor: 'red',
+  //     borderWidth: '0.15rem',
+  //   },
+  // },
 }));
-export default function QuestionList() {
+
+export default function QuestionList(props) {
   const classes = useStyles();
   const [questionIndex, setQuestionIndex] = useState(0);
   const [distance, setDistance] = useState(0);
@@ -49,14 +66,14 @@ export default function QuestionList() {
     'Italian': 'italian',
     'Mexican': 'mexican',
     'Japanese': 'japanese',
-    'American': 'newamerican, tradamerican',
+    'American': 'tradamerican',
     'French': 'french',
     'Korean': 'korean', 
     'Mediterranean': 'mediterranean'
   }
   
   const getResults = () => {
-    axios.get(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?`, {
+    axios.get(`https://radiant-ocean-98981.herokuapp.com/https://api.yelp.com/v3/businesses/search?`, {
       headers: {
         Authorization: `Bearer R_NfHZkf-x2LiKEKtJ7hU2FHZbmM2exfFsNO1etgf6NAgisNoVBBdPnWJnFIYhGZRoEHc81zQaMDFwk95Ye2ny9SEkX9iEaSbp1Pfynkgb6kEQcxxygpwa-ivuBAYnYx`
     },
@@ -76,10 +93,9 @@ export default function QuestionList() {
         
       })
       .catch((err) => {
-      console.log ('error')
-      })
-    
-  }
+        console.log("error");
+      });
+  };
 
   const questions = [
     {
@@ -94,7 +110,7 @@ export default function QuestionList() {
               setDistance(val);
             }}
           ></Slider>
-          <Typography style={{ fontSize: 30 }}>
+          <Typography style={{ fontSize: 27 }}>
             {distance + " miles   "}
           </Typography>
         </React.Fragment>
@@ -106,7 +122,7 @@ export default function QuestionList() {
         <React.Fragment>
           {/* <FormControl> */}
           <FormControl style={{ width: "40%", marginTop: "2%" }}>
-            <InputLabel id="demo-simple-select-label" style={{}}>
+            <InputLabel id="demo-simple-select-label">
               Choose Cuisine Type
             </InputLabel>
             <Select
@@ -140,7 +156,7 @@ export default function QuestionList() {
           <ButtonGroup
             variant="outlined"
             aria-label="outlined button group"
-            style={{ width: "75%" }}
+            style={{ width: "75%", marginTop: "1.5%" }}
           >
             <Button
               style={{
@@ -245,7 +261,7 @@ export default function QuestionList() {
             fontSize: 20,
             padding: 13,
           }}
-          onClick = {() => getResults()}
+          onClick={() => getResults()}
         >
           Search
         </Button>
@@ -263,11 +279,20 @@ export default function QuestionList() {
               <RefreshIcon style = {{fontSize: 50, color: 'white'}}/>
             </IconButton>
           <RestaurantListing
-              image = {restaurant.image_url}
-              rating = {restaurant.rating}
-              tags = {restaurant.categories}
-              address = {restaurant.location.address1}
-              restaurantTitle = {restaurant.name}
+              user = {props.user}
+              restaurant = {{
+                image: (restaurant.image_url) ? restaurant.image_url : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png",
+                rating: restaurant.rating,
+                tags: restaurant.categories,
+                address: restaurant.location.address1,
+                title: restaurant.name,
+              }}
+              // image = {(restaurant.image_url) ? restaurant.image_url : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png"}
+              // rating = {restaurant.rating}
+              // tags = {restaurant.categories}
+              // address = {restaurant.location.address1}
+              // restaurantTitle = {restaurant.name}
+              // id  = {restaurant.id}
           />
       </React.Fragment>
     }

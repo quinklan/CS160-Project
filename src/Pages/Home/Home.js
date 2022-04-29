@@ -68,14 +68,13 @@ export default function Home(props) {
         <Grid
           container
           spacing={3}
-          xs={12}
           style={{
             paddingTop: 30,
             margin: 0,
             height: "-webkit-fill-available",
           }}
         >
-            <QuestionList></QuestionList>
+            <QuestionList {...props}></QuestionList>
           {/* <QuestionCard>
             <Typography style = {{fontSize: 30}}>Find Restaurant</Typography>
             <Typography style = {{fontSize: 20}}>How far do you want to travel?</Typography>
