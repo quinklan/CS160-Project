@@ -5,9 +5,8 @@ const User = require('./User');
 
 const RestaurantSchema = new Schema( 
   {
-    url:{
+    title:{
       type: String,
-      required: true
     },
     notes: {
       type: String
@@ -17,7 +16,20 @@ const RestaurantSchema = new Schema(
     },
     userID:{
       type: Schema.Types.ObjectID
+    },
+    address: {
+      type: String,
+    },
+    rating: {
+      type: Number,
+    },
+    tags: {
+      type: Array
+    },
+    image: {
+      type: String
     }
+
   }
 );
 

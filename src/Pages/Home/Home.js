@@ -68,7 +68,6 @@ export default function Home(props) {
         <Grid
           container
           spacing={3}
-          xs={12}
           style={{
             paddingTop: 30,
             margin: 0,

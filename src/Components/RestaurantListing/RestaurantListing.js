@@ -31,13 +31,12 @@ function distance(lat1, lon1, lat2, lon2) {
 }
 
 export default function RestaurantListing(props) {
-  console.log(props);
   return (
     <React.Fragment>
       <Grid container spacing={2}>
         <Grid item xs={5}>
           <img
-            src={props.image}
+            src={props.restaurant.image}
             style={{ objectFit: "cover", width: "100%", height: 200 }}
           ></img>
         </Grid>
@@ -56,11 +55,11 @@ export default function RestaurantListing(props) {
           </Grid>
         </Grid>
       ) : ( */}
-        {props.review ? (
+        {props.restaurant.review ? (
           <Grid item xs={7}>
             <Grid container>
               <Grid item xs={11}>
-                <Typography variant="h4">{props.restaurantTitle}</Typography>
+                <Typography variant="h4">{props.restaurant.title}</Typography>
               </Grid>
               <Grid item xs={1}>
                 <Button>
@@ -68,19 +67,20 @@ export default function RestaurantListing(props) {
                 </Button>
               </Grid>
               <Grid item xs={12} style={{ color: "grey" }}>
-                <Typography variant="h6">{props.address}</Typography>
+                <Typography variant="h6">{props.restaurant.address}</Typography>
               </Grid>
               <Grid item xs={12} style={{ color: "grey" }}>
                 <Typography variant="h6">
-                  <Rating value={props.rating} precision={0.5} readOnly />
+                  <Rating value={props.restaurant.rating} precision={0.5} readOnly />
                 </Typography>
               </Grid>
               <Grid item xs={12} style={{ color: "grey" }}>
                 <Grid container spacing={2}>
-                  {props.tags.map((tag) => {
+                  {props.restaurant.tags.map((tag) => {
                     return (
                       <Grid
                         item
+                        key = {tag.title}
                         style={{
                           backgroundColor: "lightGrey",
                           margin: 3,
@@ -109,7 +109,7 @@ export default function RestaurantListing(props) {
               </Typography> */}
                 </Grid>
                 <Grid item xs={12} style={{ color: "grey" }}>
-                  <Typography variant="h6">{props.description}</Typography>
+                  <Typography variant="h6">{props.restaurant.description}</Typography>
                 </Grid>
               </Grid>
             </Grid>
@@ -118,25 +118,26 @@ export default function RestaurantListing(props) {
           <Grid item xs={7}>
             <Grid container>
               <Grid item xs={12}>
-                <Typography variant="h4">{props.restaurantTitle}</Typography>
+                <Typography variant="h4">{props.restaurant.title}</Typography>
               </Grid>
               {/* <Grid item xs={2}>
               <FavoriteIcon className="listing-favorite" />
             </Grid> */}
               <Grid item xs={12} style={{ color: "grey" }}>
-                <Typography variant="h6">{props.address}</Typography>
+                <Typography variant="h6">{props.restaurant.address}</Typography>
               </Grid>
               <Grid item xs={12} style={{ color: "grey" }}>
                 <Typography variant="h6">
-                  <Rating value={props.rating} precision={0.5} readOnly />
+                  <Rating value={props.restaurant.rating} precision={0.5} readOnly />
                 </Typography>
               </Grid>
               <Grid item xs={12} style={{ color: "grey" }}>
                 <Grid container spacing={2}>
-                  {props.tags.map((tag) => {
+                  {props.restaurant.tags.map((tag) => {
                     return (
                       <Grid
                         item
+                        key = {tag.title}
                         style={{
                           backgroundColor: "lightGrey",
                           margin: 3,
@@ -196,7 +197,7 @@ export default function RestaurantListing(props) {
               padding: 10,
             }}
             onClick = {() => {
-              addRestaurant({userID: props.user.id, url: props.id})
+              addRestaurant({userID: props.user.id, ...props.restaurant})
             }}
           >
             Dine Here!

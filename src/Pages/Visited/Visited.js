@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import { createUser } from "../../ApiFunctions/User";
@@ -7,6 +7,7 @@ import QuestionList from "../../Components/QuestionList/QuestionList";
 import ListingCard from "../../Components/ListingCard/ListingCard";
 import { Button, TextField, Typography } from "@material-ui/core";
 import RestaurantListing from "../../Components/RestaurantListing/RestaurantListing";
+import {getUserRestaurants} from '../../ApiFunctions/Restaurants';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Visited() {
+export default function Visited(props) {
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -31,6 +32,7 @@ export default function Visited() {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [distance, setDistance] = useState(0);
+  const [restaurants, setRestaurants] = useState([]);
   const submitHandler = async (user) => {
     createUser(user).then((res) => {
       setError(res.error);
@@ -39,6 +41,11 @@ export default function Visited() {
     return false;
   };
 
+  useEffect(async() => {
+    const restaurants = await (await getUserRestaurants(props.user.id)).body.data
+    console.log(restaurants)
+    setRestaurants(restaurants)
+  },[])
   return (
     <React.Fragment>
       <div className="visited-background">
@@ -59,25 +66,9 @@ export default function Visited() {
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              {/* <RestaurantListing></RestaurantListing> */}
-              <RestaurantListing
-                image="https://media-cdn.tripadvisor.com/media/photo-s/11/4a/b8/61/a-burger-for-every-lifestyle.jpg"
-                restaurantTitle="The Counter"
-                address="20800 Stevens Creek Blvd"
-                description="This food here is great! However, the customer service here is terrible. I had to wait an HOUR before I got my food."
-                rating={2.5}
-                tags={[{title: "Bars"}, {title: "Burgers"}, {title: "Sandwiches"}]}
-                review
-              ></RestaurantListing>
-              <RestaurantListing
-                image="https://s3-media2.fl.yelpcdn.com/bphoto/Q7ErHze2LxTdmuKSYq94jQ/o.jpg"
-                restaurantTitle="The Counter"
-                address="20800 Stevens Creek Blvd"
-                description="This food here is great! However, the customer service here is terrible. I had to wait an HOUR before I got my food."
-                rating={2.5}
-                tags={[{title: "Bars"}, {title: "Burgers"}, {title: "Sandwiches"}]}
-                review
-              ></RestaurantListing>
+              {restaurants.map((restaurant) => {
+                return <RestaurantListing key = {restaurant._id} restaurant = {{...restaurant}} user = {props.user} review></RestaurantListing>
+              })}
             </Grid>
             <Grid item xs={3}></Grid>
           </ListingCard>
