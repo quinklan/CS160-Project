@@ -287,6 +287,7 @@ export default function QuestionList(props) {
                 address: restaurant.location.address1,
                 title: restaurant.name,
               }}
+              listing
               // image = {(restaurant.image_url) ? restaurant.image_url : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png"}
               // rating = {restaurant.rating}
               // tags = {restaurant.categories}
