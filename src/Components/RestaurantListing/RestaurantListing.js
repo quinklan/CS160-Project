@@ -185,13 +185,11 @@ export default function RestaurantListing(props) {
         </Grid>
         <Grid item xs={2}>
           <Button
-            // className="back-button"
             style={{
               color: "white",
               backgroundColor: "#FD804B",
               borderRadius: 10,
               right: "35%",
-              // float: "right",
               fontSize: 20,
               padding: 10,
             }}
