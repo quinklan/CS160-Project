@@ -62,6 +62,9 @@
   outline: none;
 }
 
+.quickbite-text{
+  text-transform: none;
+}
 .navbar-link :hover{
   color: #F69E20;
 }

@@ -1,8 +1,7 @@
-.visited-background{
+.favorites-background{
     height: -webkit-fill-available;
     padding: 0px 0px 0px 0px;
     background: linear-gradient(293.3deg, #FE5858 7.78%, #FC9842 82.14%);
     display: table;
     width: 100%
-
 }

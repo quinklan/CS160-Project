@@ -51,10 +51,10 @@ const ProfileDropdown = (props) => {
                   />
                 </Link>
                 */}
-                <Button className = 'admin-link' onClick = {() =>  {props.history.push("/account")}} >
+                {/* <Button className = 'admin-link' onClick = {() =>  {props.history.push("/account")}} >
                  
                   Account
-                </Button> 
+                </Button>  */}
                 <Button className = 'admin-link'  to = '/' onClick = {props.handleLogout}>
                   {/* <MenuItem
                       className ='profile-menu-item'

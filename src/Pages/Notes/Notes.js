@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import { createUser } from "../../ApiFunctions/User";
 import "./Notes.css";
-import QuestionList from "../../Components/QuestionList/QuestionList";
-import QuestionCard from "../../Components/QuestionCard/QuestionCard";
 import { Button, TextField, Typography } from "@material-ui/core";
-
+import { useHistory, useLocation } from "react-router-dom";
+import { editRestaurant } from "../../ApiFunctions/Restaurants";
 const useStyles = makeStyles((theme) => ({
   paper: {
     height: "100%",
@@ -17,26 +15,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Notes() {
+export default function Notes(props) {
+  console.log(props);
+  let history = useHistory();
+  let location = useLocation();
+  console.log("Bruh", location.state.restaurant);
   const classes = useStyles();
-  const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-
-  const [address, setAddress] = useState("hi");
-  const [payment, setPayment] = useState("bye");
-  const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [distance, setDistance] = useState(0);
-  const submitHandler = async (user) => {
-    createUser(user).then((res) => {
-      setError(res.error);
-      setSuccess(!res.error);
-    });
-    return false;
-  };
+  const [notes, setNotes] = useState("");
 
   return (
     <React.Fragment>
@@ -46,16 +31,16 @@ export default function Notes() {
           spacing={3}
           xs={12}
           style={{
-            // paddingTop: 30,
-            margin: 0,
-            // height: "-webkit-fill-available",
-            width: "80%"
+            width: "80%",
+            padding: 20,
+            marginLeft: "10%",
+            marginTop: "5%",
+            backgroundColor: "white",
+            borderRadius: 20,
           }}
-          className="notes-card"
         >
           <Grid item xs={1}>
             <Button
-              // className="back-button"
               style={{
                 color: "white",
                 backgroundColor: "#979DA4",
@@ -63,9 +48,11 @@ export default function Notes() {
                 float: "left",
                 fontSize: 20,
                 padding: 13,
-                // marginBottom: "2%",
               }}
               fullWidth
+              onClick={() => {
+                history.goBack();
+              }}
             >
               BACK
             </Button>
@@ -74,7 +61,7 @@ export default function Notes() {
           <Grid item xs={1}></Grid>
           <Grid item xs={11}>
             <Typography style={{ fontSize: 40 }}>
-              The Counter Cupertino
+              {location.state.title}
             </Typography>
           </Grid>
           <Grid item xs={1}></Grid>
@@ -84,31 +71,44 @@ export default function Notes() {
           <Grid item xs={1}></Grid>
           <Grid item xs={11}>
             <TextField
-              style={{ width: "95%", backgroundColor: "#E5E5E5", borderRadius: 15}}
-              inputProps={{style:{fontSize:25, padding: 10}}}
-              InputProps = {{disableUnderline:true}}
+              style={{
+                width: "95%",
+                backgroundColor: "#E5E5E5",
+                borderRadius: 15,
+              }}
+              inputProps={{ style: { fontSize: 25, padding: 10 } }}
+              InputProps={{ disableUnderline: true }}
               rows={12}
               multiline
-              backgroundColor = "#E5E5E5"
+              backgroundColor="#E5E5E5"
+              onChange={(e) => setNotes(e.target.value)}
+              defaultValue={
+                location.state.restaurant.notes
+                  ? location.state.restaurant.notes
+                  : ""
+              }
             ></TextField>
           </Grid>
-          <Grid item xs= {11}></Grid>
+          <Grid item xs={11}></Grid>
           <Grid item xs={1}>
-          <Button
-            // className="back-button"
-            style={{
-              color: "white",
-              backgroundColor: "#5AA1FF",
-              borderRadius: 10,
-              float: "right",
-              right: "70%",
-              fontSize: 20,
-              padding: 13,
-            //   marginTop: "2%",
-            }}
-          >
-            Save
-          </Button>
+            <Button
+              style={{
+                color: "white",
+                backgroundColor: "#5AA1FF",
+                borderRadius: 10,
+                float: "right",
+                right: "70%",
+                fontSize: 20,
+                padding: 13,
+              }}
+              onClick={() => {
+                let newRestaurant = { ...location.state.restaurant };
+                newRestaurant.notes = notes;
+                editRestaurant(newRestaurant);
+              }}
+            >
+              Save
+            </Button>
           </Grid>
         </Grid>
       </div>
