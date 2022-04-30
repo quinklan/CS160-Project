@@ -22,8 +22,8 @@ const MemberNavbar = (props) => {
         <Link className="navbar-link" to="/home">
           <Typography variant="h6">Favorites</Typography>
         </Link>
-        <Link className="navbar-link" to="/home">
-          <Typography variant="h6">Personal Reviews</Typography>
+        <Link className="navbar-link" to="/visited">
+          <Typography variant="h6">Visited</Typography>
         </Link>
         <ProfileDropdown {...props}/>
       </div>
