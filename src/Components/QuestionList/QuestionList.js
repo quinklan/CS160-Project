@@ -281,11 +281,11 @@ export default function QuestionList(props) {
           <RestaurantListing
               user = {props.user}
               restaurant = {{
-                image: (restaurant.image_url) ? restaurant.image_url : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png",
-                rating: restaurant.rating,
-                tags: restaurant.categories,
-                address: restaurant.location.address1,
-                title: restaurant.name,
+                image: (restaurant?.image_url) ? restaurant.image_url : "https://static.vecteezy.com/system/resources/previews/004/141/669/original/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg",
+                rating: restaurant?.rating,
+                tags: restaurant?.categories,
+                address: restaurant?.location.address1,
+                title: restaurant?.name ? restaurant.name : ["No restaurant was found with the given criteria.", <br/>, "Please click \"RESTART\" and try again."],
               }}
               listing
               // image = {(restaurant.image_url) ? restaurant.image_url : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png"}

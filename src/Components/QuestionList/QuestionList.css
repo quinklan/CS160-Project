@@ -1,10 +1,8 @@
 .back-button {
-    transform:rotate(180deg)
+  transform: rotate(180deg);
 }
 
 .menu {
-    /* float: center;
-    position: center; */
-    position:absolute;
-    transform: translateX(50%);
+  position: absolute;
+  transform: translateX(50%);
 }

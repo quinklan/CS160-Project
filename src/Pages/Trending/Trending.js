@@ -1,10 +1,25 @@
 import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/core/styles";
+import { createUser } from "../../ApiFunctions/User";
 import "./Trending.css";
 import ListingCard from "../../Components/ListingCard/ListingCard";
 import { Typography } from "@material-ui/core";
 import RestaurantListing from "../../Components/RestaurantListing/RestaurantListing";
 import axios from "axios";
+
+const getCusineCategory = {
+  0: "thai",
+  1: "indpak",
+  2: "chinese",
+  3: "italian",
+  4: "mexican",
+  5: "japanese",
+  6: "newamerican, tradamerican",
+  7: "french",
+  8: "korean",
+  9: "mediterranean",
+};
 
 export default function Trending(props) {
   const [restaurants, setRestaurants] = useState([]);

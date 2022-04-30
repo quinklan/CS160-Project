@@ -1,5 +1,4 @@
 .listing-favorite{
-    /* fill: white !important; */
     stroke: black;
     stroke-width: 2;
 }
@@ -7,12 +6,6 @@
 .listing-favorite :hover{
     fill: red;
     cursor: pointer;
-}
-
-.listing-notes{
-    /* fill: white !important; */
-    /* stroke: black; */
-    /* stroke-width: 2; */
 }
 
 .listing-notes :hover{
