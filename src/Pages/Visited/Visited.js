@@ -58,7 +58,7 @@ export default function Visited() {
                 Visited Restaurants
               </Typography>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} style={{marginBottom: "3%" }}>
               {/* <RestaurantListing></RestaurantListing> */}
               <RestaurantListing
                 image="https://media-cdn.tripadvisor.com/media/photo-s/11/4a/b8/61/a-burger-for-every-lifestyle.jpg"
@@ -66,16 +66,43 @@ export default function Visited() {
                 address="20800 Stevens Creek Blvd"
                 description="This food here is great! However, the customer service here is terrible. I had to wait an HOUR before I got my food."
                 rating={2.5}
-                tags={[{title: "Bars"}, {title: "Burgers"}, {title: "Sandwiches"}]}
+                tags={[
+                  { title: "Bars" },
+                  { title: "Burgers" },
+                  { title: "Sandwiches" },
+                ]}
                 review
               ></RestaurantListing>
+            </Grid>
+            <Grid item xs={12} style={{marginBottom: "3%" }}>
+              {/* <RestaurantListing></RestaurantListing> */}
               <RestaurantListing
-                image="https://s3-media2.fl.yelpcdn.com/bphoto/Q7ErHze2LxTdmuKSYq94jQ/o.jpg"
+                image="https://media-cdn.tripadvisor.com/media/photo-s/11/4a/b8/61/a-burger-for-every-lifestyle.jpg"
                 restaurantTitle="The Counter"
                 address="20800 Stevens Creek Blvd"
                 description="This food here is great! However, the customer service here is terrible. I had to wait an HOUR before I got my food."
                 rating={2.5}
-                tags={[{title: "Bars"}, {title: "Burgers"}, {title: "Sandwiches"}]}
+                tags={[
+                  { title: "Bars" },
+                  { title: "Burgers" },
+                  { title: "Sandwiches" },
+                ]}
+                review
+              ></RestaurantListing>
+            </Grid>
+            <Grid item xs={12} style={{marginBottom: "3%" }}>
+              {/* <RestaurantListing></RestaurantListing> */}
+              <RestaurantListing
+                image="https://media-cdn.tripadvisor.com/media/photo-s/11/4a/b8/61/a-burger-for-every-lifestyle.jpg"
+                restaurantTitle="The Counter"
+                address="20800 Stevens Creek Blvd"
+                description="This food here is great! However, the customer service here is terrible. I had to wait an HOUR before I got my food."
+                rating={2.5}
+                tags={[
+                  { title: "Bars" },
+                  { title: "Burgers" },
+                  { title: "Sandwiches" },
+                ]}
                 review
               ></RestaurantListing>
             </Grid>

@@ -1,8 +1,7 @@
 .listing-card{
-    background: #FFFFFF;
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    transform: translateY(-45%) translateX(-6.8%);
-    border-radius: 20px;
+        background: #FFFFFF;
+        border-radius: 20px;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        margin-left: 10%;
 }
