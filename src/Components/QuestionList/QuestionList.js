@@ -1,7 +1,13 @@
-import { ButtonGroup, Grid, Icon, MenuItem, Typography } from "@material-ui/core";
+import {
+  ButtonGroup,
+  Grid,
+  Icon,
+  MenuItem,
+  Typography,
+} from "@material-ui/core";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
-import RefreshIcon from '@mui/icons-material/Refresh';
+import RefreshIcon from "@mui/icons-material/Refresh";
 import FormControl from "@mui/material/FormControl";
 import React, { useState } from "react";
 import QuestionCard from "../QuestionCard/QuestionCard";
@@ -11,13 +17,13 @@ import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 // import FormControl from "@material-ui/core/FormControl";
 // import InputLabel from "@material-ui/core/InputLabel";
 import { makeStyles } from "@material-ui/core/styles";
-import IconButton from '@mui/material/IconButton';
+import IconButton from "@mui/material/IconButton";
 import "./QuestionList.css";
 import { OutlinedInput } from "@mui/material";
 import RestaurantListing from "../RestaurantListing/RestaurantListing";
 import axios from "axios";
 import { BorderColor } from "@material-ui/icons";
-import { SxProps } from '@mui/material/styles';
+import { SxProps } from "@mui/material/styles";
 
 // function increaseQuestionIndex() {
 //   setQuestionIndex(++1)
@@ -60,37 +66,40 @@ export default function QuestionList(props) {
   const [found, setFound] = useState(false);
   const [restaurant, setRestaurant] = useState({});
   const getCusineCategory = {
-    'Thai': 'thai',
-    'Indian': 'indpak',
-    'Chinese': 'chinese',
-    'Italian': 'italian',
-    'Mexican': 'mexican',
-    'Japanese': 'japanese',
-    'American': 'tradamerican',
-    'French': 'french',
-    'Korean': 'korean', 
-    'Mediterranean': 'mediterranean'
-  }
-  
+    Thai: "thai",
+    Indian: "indpak",
+    Chinese: "chinese",
+    Italian: "italian",
+    Mexican: "mexican",
+    Japanese: "japanese",
+    American: "tradamerican",
+    French: "french",
+    Korean: "korean",
+    Mediterranean: "mediterranean",
+  };
+
   const getResults = () => {
-    axios.get(`https://radiant-ocean-98981.herokuapp.com/https://api.yelp.com/v3/businesses/search?`, {
-      headers: {
-        Authorization: `Bearer R_NfHZkf-x2LiKEKtJ7hU2FHZbmM2exfFsNO1etgf6NAgisNoVBBdPnWJnFIYhGZRoEHc81zQaMDFwk95Ye2ny9SEkX9iEaSbp1Pfynkgb6kEQcxxygpwa-ivuBAYnYx`
-    },
-    params: {
-      longitude: -122.0322,
-      latitude: 37.3230,
-      categories: getCusineCategory[cuisine], 
-      open_now: true,
-      radius: distance * 1609,
-      price: dollar,
-    }
-    })
+    axios
+      .get(
+        `https://radiant-ocean-98981.herokuapp.com/https://api.yelp.com/v3/businesses/search?`,
+        {
+          headers: {
+            Authorization: `Bearer R_NfHZkf-x2LiKEKtJ7hU2FHZbmM2exfFsNO1etgf6NAgisNoVBBdPnWJnFIYhGZRoEHc81zQaMDFwk95Ye2ny9SEkX9iEaSbp1Pfynkgb6kEQcxxygpwa-ivuBAYnYx`,
+          },
+          params: {
+            longitude: -122.0322,
+            latitude: 37.323,
+            categories: getCusineCategory[cuisine],
+            open_now: true,
+            radius: distance * 1609,
+            price: dollar,
+          },
+        }
+      )
       .then((res) => {
         let random = Math.floor(Math.random() * res.data.businesses.length);
         setRestaurant(res.data.businesses[random]);
         setFound(true);
-        
       })
       .catch((err) => {
         console.log("error");
@@ -206,97 +215,103 @@ export default function QuestionList(props) {
   ];
 
   return (
-    <QuestionCard align = {(found) ? '' : 'center'}>
-      {(!found) ? 
-      <React.Fragment>
-      <Typography style={{ fontSize: 50, marginBottom: "5%" }}>
-        Find Restaurant
-      </Typography>
-      <div style={{ marginBottom: "5%" }}>
-        <Typography style={{ fontSize: 30 }}>
-          {questions[questionIndex].text}
-        </Typography>
-        {questions[questionIndex].component}
-      </div>
-
-      {questionIndex < questions.length - 1 ? (
-        <Button
-          onClick={() => setQuestionIndex(questionIndex + 1)}
-          style={{
-            color: "white",
-            backgroundColor: "#5AA1FF",
-            borderRadius: 10,
-            float: "right",
-          }}
-        >
-          <ArrowRightAltIcon style={{ fontSize: 50 }}></ArrowRightAltIcon>
-          {/* <ArrowRightAltIcon className = "back-button"></ArrowRightAltIcon> */}
-        </Button>
-      ) : null}
-
-      {questionIndex !== 0 ? (
-        <Button
-          className="back-button"
-          onClick={() => setQuestionIndex(questionIndex - 1)}
-          style={{
-            color: "white",
-            backgroundColor: "#979DA4",
-            borderRadius: 10,
-            float: "left",
-          }}
-        >
-          <ArrowRightAltIcon style={{ fontSize: 50 }}></ArrowRightAltIcon>
-          {/* <ArrowRightAltIcon className = "back-button"></ArrowRightAltIcon> */}
-        </Button>
-      ) : null}
-
-      {questionIndex == questions.length - 1 ? (
-        <Button
-          // className="back-button"
-          style={{
-            color: "white",
-            backgroundColor: "#5AA1FF",
-            borderRadius: 10,
-            float: "right",
-            fontSize: 20,
-            padding: 13,
-          }}
-          onClick={() => getResults()}
-        >
-          Search
-        </Button>
-      ) : null}
-      </React.Fragment>
-      : 
-      <React.Fragment>
-            <Typography style={{ fontSize: 50, marginBottom: "2%", textAlign: 'center' }}>
-              We found a restaurant for you!
+    <QuestionCard align={found ? "" : "center"}>
+      {!found ? (
+        <React.Fragment>
+          <Typography style={{ fontSize: 50, marginBottom: "5%" }}>
+            Find Restaurant
+          </Typography>
+          <div style={{ marginBottom: "5%" }}>
+            <Typography style={{ fontSize: 30 }}>
+              {questions[questionIndex].text}
             </Typography>
-            <IconButton 
-              style = {{position: 'absolute', top: '8%', right: '3%', backgroundColor: '#4B87C7'}}
-              onClick = {() => getResults()}
-            >
-              <RefreshIcon style = {{fontSize: 50, color: 'white'}}/>
-            </IconButton>
-          <RestaurantListing
-              user = {props.user}
-              restaurant = {{
-                image: (restaurant?.image_url) ? restaurant.image_url : "https://static.vecteezy.com/system/resources/previews/004/141/669/original/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg",
-                rating: restaurant?.rating,
-                tags: restaurant?.categories,
-                address: restaurant?.location.address1,
-                title: restaurant?.name ? restaurant.name : ["No restaurant was found with the given criteria.", <br/>, "Please click \"RESTART\" and try again."],
+            {questions[questionIndex].component}
+          </div>
+
+          {questionIndex < questions.length - 1 ? (
+            <Button
+              onClick={() => setQuestionIndex(questionIndex + 1)}
+              style={{
+                color: "white",
+                backgroundColor: "#5AA1FF",
+                borderRadius: 10,
+                float: "right",
               }}
-              listing
-              // image = {(restaurant.image_url) ? restaurant.image_url : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png"}
-              // rating = {restaurant.rating}
-              // tags = {restaurant.categories}
-              // address = {restaurant.location.address1}
-              // restaurantTitle = {restaurant.name}
-              // id  = {restaurant.id}
+            >
+              <ArrowRightAltIcon style={{ fontSize: 50 }}></ArrowRightAltIcon>
+            </Button>
+          ) : null}
+
+          {questionIndex !== 0 ? (
+            <Button
+              className="back-button"
+              onClick={() => setQuestionIndex(questionIndex - 1)}
+              style={{
+                color: "white",
+                backgroundColor: "#979DA4",
+                borderRadius: 10,
+                float: "left",
+              }}
+            >
+              <ArrowRightAltIcon style={{ fontSize: 50 }}></ArrowRightAltIcon>
+            </Button>
+          ) : null}
+
+          {questionIndex == questions.length - 1 ? (
+            <Button
+              style={{
+                color: "white",
+                backgroundColor: "#5AA1FF",
+                borderRadius: 10,
+                float: "right",
+                fontSize: 20,
+                padding: 13,
+              }}
+              onClick={() => getResults()}
+            >
+              Search
+            </Button>
+          ) : null}
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
+          <Typography
+            style={{ fontSize: 50, marginBottom: "2%", textAlign: "center" }}
+          >
+            We found a restaurant for you!
+          </Typography>
+          <IconButton
+            style={{
+              position: "absolute",
+              top: "8%",
+              right: "3%",
+              backgroundColor: "#4B87C7",
+            }}
+            onClick={() => getResults()}
+          >
+            <RefreshIcon style={{ fontSize: 50, color: "white" }} />
+          </IconButton>
+          <RestaurantListing
+            user={props.user}
+            restaurant={{
+              image: restaurant?.image_url
+                ? restaurant.image_url
+                : "https://static.vecteezy.com/system/resources/previews/004/141/669/original/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg",
+              rating: restaurant?.rating,
+              tags: restaurant?.categories,
+              address: restaurant?.location.address1,
+              title: restaurant?.name
+                ? restaurant.name
+                : [
+                    "No restaurant was found with the given criteria.",
+                    <br />,
+                    'Please click "RESTART" and try again.',
+                  ],
+            }}
+            listing
           />
-      </React.Fragment>
-    }
+        </React.Fragment>
+      )}
     </QuestionCard>
   );
 }
