@@ -9,13 +9,16 @@ import "./Navbar.css";
 import ProfileDropdown from "../ProfileDropdown/ProfileDropdown";
 import { useHistory } from "react-router-dom";
 const MemberNavbar = (props) => {
-  let history = useHistory()
+  let history = useHistory();
   return (
     <AppBar className="navbar" position="static">
       <Toolbar className="navbar-body">
-        <Button className="navbar-link" onClick = {() => history.push('/home')}>
+        <Button className="navbar-link" onClick={() => history.push("/home")}>
           <img src="/profile-1.png" height="40px" width="40px" />
-          <Typography style={{ marginLeft: 5, fontSize: 25 }}>
+          <Typography
+            className="quickbite-text"
+            style={{ marginLeft: 5, fontSize: 25 }}
+          >
             QuickBite
           </Typography>
         </Button>
