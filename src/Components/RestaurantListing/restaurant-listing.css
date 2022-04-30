@@ -8,3 +8,14 @@
     fill: red;
     cursor: pointer;
 }
+
+.listing-notes{
+    /* fill: white !important; */
+    /* stroke: black; */
+    /* stroke-width: 2; */
+}
+
+.listing-notes :hover{
+    fill: orange;
+    cursor: pointer;
+}
