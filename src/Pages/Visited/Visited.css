@@ -2,22 +2,15 @@
     height: -webkit-fill-available;
     padding: 0px 0px 0px 0px;
     background: linear-gradient(293.3deg, #FE5858 7.78%, #FC9842 82.14%);
-}
-
-.grid-color{
-    background: #FFFFFF;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%) translateX(50%);
-    width: 50%;
-    border-radius: 20px;
+    display: table;
 }
 
 .visited-card{
-    background: #FFFFFF;
+    /* background: #FFFFFF;
     position: absolute;
     top: 50%;
     width: 80%;
     transform: translateY(-44%) translateX(12%);
-    border-radius: 20px;
+    border-radius: 20px; */
+    /* width: 80%; */
 }
