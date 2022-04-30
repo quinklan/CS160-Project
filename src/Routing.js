@@ -6,6 +6,8 @@ import SignUp from './Pages/SignUp/SignUp';
 import Main from './Pages/Main/Main';
 import Home from './Pages/Home/Home';
 import Notes from './Pages/Notes/Notes';
+import Trending from './Pages/Trending/Trending';
+import Favorites from './Pages/Favorites/Favorites';
 import Visited from './Pages/Visited/Visited';
 import Account from './Pages/Account/Account';
 
@@ -19,6 +21,16 @@ export default function Routing({appProps}){
     {
       Component: Notes,
       path: '/notes',
+      redirect: '/login'
+    },
+    {
+      Component: Trending,
+      path: '/trending',
+      redirect: '/login'
+    },
+    {
+      Component: Favorites,
+      path: '/favorites',
       redirect: '/login'
     },
     {

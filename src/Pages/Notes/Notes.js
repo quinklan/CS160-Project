@@ -6,7 +6,8 @@ import "./Notes.css";
 import QuestionList from "../../Components/QuestionList/QuestionList";
 import QuestionCard from "../../Components/QuestionCard/QuestionCard";
 import { Button, TextField, Typography } from "@material-ui/core";
-
+import { useHistory, useLocation } from 'react-router-dom';
+import { editRestaurant } from '../../ApiFunctions/Restaurants';
 const useStyles = makeStyles((theme) => ({
   paper: {
     height: "100%",
@@ -17,26 +18,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Notes() {
+export default function Notes(props) {
+  console.log(props)
+  let history = useHistory()
+  let location = useLocation()
+  console.log("Bruh", location.state.restaurant)
   const classes = useStyles();
-  const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-
-  const [address, setAddress] = useState("hi");
-  const [payment, setPayment] = useState("bye");
-  const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [distance, setDistance] = useState(0);
-  const submitHandler = async (user) => {
-    createUser(user).then((res) => {
-      setError(res.error);
-      setSuccess(!res.error);
-    });
-    return false;
-  };
+  const [notes, setNotes] = useState("");
+  
 
   return (
     <React.Fragment>
@@ -66,6 +55,9 @@ export default function Notes() {
                 // marginBottom: "2%",
               }}
               fullWidth
+              onClick = {() => {
+                history.goBack()
+              }}
             >
               BACK
             </Button>
@@ -74,7 +66,7 @@ export default function Notes() {
           <Grid item xs={1}></Grid>
           <Grid item xs={11}>
             <Typography style={{ fontSize: 40 }}>
-              The Counter Cupertino
+              {location.state.title}
             </Typography>
           </Grid>
           <Grid item xs={1}></Grid>
@@ -90,6 +82,8 @@ export default function Notes() {
               rows={12}
               multiline
               backgroundColor = "#E5E5E5"
+              onChange = {(e) => setNotes(e.target.value)}
+              defaultValue = {(location.state.restaurant.notes) ? location.state.restaurant.notes : '' }
             ></TextField>
           </Grid>
           <Grid item xs= {11}></Grid>
@@ -105,6 +99,11 @@ export default function Notes() {
               fontSize: 20,
               padding: 13,
             //   marginTop: "2%",
+            }}
+            onClick = {() => {
+              let newRestaurant = {...location.state.restaurant}
+              newRestaurant.notes = notes
+              editRestaurant(newRestaurant)
             }}
           >
             Save

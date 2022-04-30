@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import { createUser } from "../../ApiFunctions/User";
-import "./Visited.css";
+import "./Favorites.css";
+import QuestionList from "../../Components/QuestionList/QuestionList";
 import ListingCard from "../../Components/ListingCard/ListingCard";
-import { Typography } from "@material-ui/core";
+import { Button, TextField, Typography } from "@material-ui/core";
 import RestaurantListing from "../../Components/RestaurantListing/RestaurantListing";
 import { getUserRestaurants } from "../../ApiFunctions/Restaurants";
 
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Visited(props) {
+export default function Favorites(props) {
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -49,7 +50,7 @@ export default function Visited(props) {
   }, []);
   return (
     <React.Fragment>
-      <div className="visited-background">
+      <div className="favorites-background">
         <Grid
           container
           spacing={3}
@@ -62,18 +63,19 @@ export default function Visited(props) {
           <ListingCard>
             <Grid item xs={12} align="center">
               <Typography style={{ fontSize: 40, marginBottom: "2%" }}>
-                Visited Restaurants
+                Favorite Restaurants
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              {restaurants.map((restaurant) => {
+              {restaurants.filter((restaurant) => restaurant.favorite).map((restaurant) => {
                 return (
                   <RestaurantListing
                     key={restaurant._id}
                     restaurant={{ ...restaurant }}
                     user={props.user}
                     review
-                  />
+                    trending
+                  ></RestaurantListing>
                 );
               })}
             </Grid>

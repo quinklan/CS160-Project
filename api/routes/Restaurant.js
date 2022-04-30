@@ -45,7 +45,7 @@ router.post('/addRestaurant', (req, res) => {
 
 router.post('/editRestaurant', (req, res) => {
   const newRestaurant = req.body;
-  Restaurant.findByIdAndUpdate(newRestaurant.id, newRestaurant)
+  Restaurant.findByIdAndUpdate(newRestaurant._id, newRestaurant)
     .then(() => {
       res.status(OK).send("Edit Successful");
     })
