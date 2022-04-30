@@ -112,6 +112,7 @@ export default function QuestionList(props) {
       component: (
         <React.Fragment>
           <Slider
+            id = 'slider'
             style={{ width: "85%" }}
             defaultValue={0}
             max={20}
