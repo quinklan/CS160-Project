@@ -65,6 +65,7 @@ export default function RestaurantListing(props) {
               <Grid item xs={12} style={{ color: "grey" }}>
                 <Typography variant="h6">
                   <Rating
+                    style={{ marginBottom: "2%" }}
                     value={props.restaurant.rating}
                     precision={0.5}
                     readOnly
@@ -72,7 +73,7 @@ export default function RestaurantListing(props) {
                 </Typography>
               </Grid>
               <Grid item xs={12} style={{ color: "grey" }}>
-                <Grid container spacing={2}>
+                <Grid container spacing={2} style={{ marginBottom: "0.5%" }}>
                   {props.restaurant.tags.map((tag) => {
                     return (
                       <Grid
@@ -96,6 +97,17 @@ export default function RestaurantListing(props) {
                       </Grid>
                     );
                   })}
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography
+                    style={{
+                      color: "black",
+                      fontSize: 23,
+                    }}
+                    className="notes-ellipsis"
+                  >
+                    {props.restaurant.notes}
+                  </Typography>
                 </Grid>
               </Grid>
             </Grid>
@@ -155,7 +167,8 @@ export default function RestaurantListing(props) {
         <Grid container>
           <Grid item xs={7} />
           <Grid item xs={2}>
-            <Button onClick = {() => window.location.reload()}
+            <Button
+              onClick={() => window.location.reload()}
               style={{
                 color: "white",
                 backgroundColor: "#979DA4",
