@@ -39,8 +39,8 @@ export default function Trending(props) {
   const handleClose = () => setOpen(false);
 
   const [restaurants, setRestaurants] = useState([]);
-  const [latitude, setLatitude] = React.useState('');
-  const [longitude, setLongitude] = React.useState('');
+  // const [latitude, setLatitude] = React.useState("");
+  // const [longitude, setLongitude] = React.useState("");
   const fifteenMiles = 24140;
 
   const getResults = async () => {
@@ -53,8 +53,10 @@ export default function Trending(props) {
               "Bearer R_NfHZkf-x2LiKEKtJ7hU2FHZbmM2exfFsNO1etgf6NAgisNoVBBdPnWJnFIYhGZRoEHc81zQaMDFwk95Ye2ny9SEkX9iEaSbp1Pfynkgb6kEQcxxygpwa-ivuBAYnYx",
           },
           params: {
-            longitude: longitude,
-            latitude: latitude,
+            longitude: -122.0322,
+            latitude: 37.323,
+            //  longitude: longitude,
+            //  latitude: latitude,
             open_now: true,
             radius: fifteenMiles,
           },
@@ -79,12 +81,12 @@ export default function Trending(props) {
     await getResults();
   }, []);
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setLatitude(position.coords.latitude);
-      setLongitude(position.coords.longitude)
-    })
-  }, []);
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition((position) => {
+  //     setLatitude(position.coords.latitude);
+  //     setLongitude(position.coords.longitude);
+  //   });
+  // }, []);
 
   return (
     <React.Fragment>
@@ -100,12 +102,12 @@ export default function Trending(props) {
         >
           <ListingCard>
             <Grid item xs={4}></Grid>
-            <Grid item xs={4}>
+            <Grid item xs={4.3}>
               <Typography style={{ fontSize: 40, marginBottom: "2%" }}>
                 Trending Restaurants
               </Typography>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={3.7}>
               <Button className="info-button" onClick={handleOpen}>
                 <InfoIcon fontSize="large"></InfoIcon>
               </Button>
@@ -152,7 +154,7 @@ export default function Trending(props) {
                         : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png",
                       rating: restaurant.rating,
                       tags: restaurant.categories,
-                      address: restaurant.location.address1 + ", " + restaurant.location.city  + ", " + restaurant.location.state + " " + restaurant.location.zip_code + " (" + (restaurant.distance/1609).toFixed(1) + " mi)",
+                      address: restaurant?.location?.address1 + ", " + restaurant?.location?.city  + ", " + restaurant?.location?.state + " " + restaurant?.location?.zip_code + " (" + (restaurant?.distance/1609).toFixed(1) + " mi)",
                       title: restaurant.name,
                     }}
                   />

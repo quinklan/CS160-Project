@@ -43,8 +43,8 @@ export default function QuestionList(props) {
   const [dollar, setDollar] = useState(1);
   const [found, setFound] = useState(false);
   const [restaurant, setRestaurant] = useState({});
-  const [latitude, setLatitude] = React.useState('');
-  const [longitude, setLongitude] = React.useState('');
+  // const [latitude, setLatitude] = React.useState('');
+  // const [longitude, setLongitude] = React.useState('');
   const getCusineCategory = {
     Thai: "thai",
     Indian: "indpak",
@@ -67,8 +67,10 @@ export default function QuestionList(props) {
             Authorization: `Bearer R_NfHZkf-x2LiKEKtJ7hU2FHZbmM2exfFsNO1etgf6NAgisNoVBBdPnWJnFIYhGZRoEHc81zQaMDFwk95Ye2ny9SEkX9iEaSbp1Pfynkgb6kEQcxxygpwa-ivuBAYnYx`,
           },
           params: {
-            longitude: longitude,
-            latitude: latitude,
+            longitude: -122.0322,
+            latitude: 37.323,
+            // longitude: longitude,
+            // latitude: latitude,
             categories: getCusineCategory[cuisine],
             open_now: true,
             radius: distance * 1609,
@@ -86,12 +88,12 @@ export default function QuestionList(props) {
       });
   };
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setLatitude(position.coords.latitude);
-      setLongitude(position.coords.longitude)
-    })
-  }, []);
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition((position) => {
+  //     setLatitude(position.coords.latitude);
+  //     setLongitude(position.coords.longitude)
+  //   })
+  // }, []);
   
   const questions = [
     {
@@ -285,7 +287,8 @@ export default function QuestionList(props) {
                 : "https://static.vecteezy.com/system/resources/previews/004/141/669/original/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg",
               rating: restaurant?.rating,
               tags: restaurant?.categories,
-              address: restaurant.location.address1 + ", " + restaurant.location.city  + ", " + restaurant.location.state + " " + restaurant.location.zip_code + " (" + (restaurant.distance/1609).toFixed(1) + " mi)",
+              // address:`${restaurant?.location?.address1}, ${restaurant?.location?.city}`,
+              address: restaurant?.location?.address1 + ", " + restaurant?.location?.city  + ", " + restaurant?.location?.state + " " + restaurant?.location?.zip_code + " (" + (restaurant?.distance/1609).toFixed(1) + " mi)",
               title: restaurant?.name
                 ? restaurant.name
                 : [
