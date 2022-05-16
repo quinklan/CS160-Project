@@ -1,14 +1,22 @@
-.listing-favorite{
-    stroke: black;
-    stroke-width: 2;
+.listing-favorite {
+  stroke: black;
+  stroke-width: 2;
 }
 
-.listing-favorite :hover{
-    fill: red;
-    cursor: pointer;
+.listing-favorite :hover {
+  fill: red;
+  cursor: pointer;
 }
 
-.listing-notes :hover{
-    fill: orange;
-    cursor: pointer;
+.listing-notes :hover {
+  fill: orange;
+  cursor: pointer;
+}
+
+.notes-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

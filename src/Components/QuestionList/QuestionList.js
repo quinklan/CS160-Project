@@ -9,7 +9,7 @@ import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import FormControl from "@mui/material/FormControl";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import QuestionCard from "../QuestionCard/QuestionCard";
 import { Slider } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
@@ -33,28 +33,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: 200,
   },
-  // select: {
-  //   "&:before": {
-  //     borderColor: 'red',
-  //   },
-  //   "&:after": {
-  //     borderColor: 'red',
-  //   },
-  //   '.MuiOutlinedInput-notchedOutline': {
-  //     borderColor: 'red',
-  //   },
-  //   '&:hover .MuiOutlinedInput-notchedOutline': {
-  //     // borderColor: '#f69e20',
-  //     borderWidth: '0.15rem',
-  //     color: 'red',
-  //     borderColor: "red",
-  //     // backgroundColor: 'red',
-  //   },
-  //   "&$focused $notchedOutline": {
-  //     borderColor: 'red',
-  //     borderWidth: '0.15rem',
-  //   },
-  // },
 }));
 
 export default function QuestionList(props) {
@@ -65,6 +43,8 @@ export default function QuestionList(props) {
   const [dollar, setDollar] = useState(1);
   const [found, setFound] = useState(false);
   const [restaurant, setRestaurant] = useState({});
+  // const [latitude, setLatitude] = React.useState('');
+  // const [longitude, setLongitude] = React.useState('');
   const getCusineCategory = {
     Thai: "thai",
     Indian: "indpak",
@@ -89,6 +69,8 @@ export default function QuestionList(props) {
           params: {
             longitude: -122.0322,
             latitude: 37.323,
+            // longitude: longitude,
+            // latitude: latitude,
             categories: getCusineCategory[cuisine],
             open_now: true,
             radius: distance * 1609,
@@ -106,6 +88,13 @@ export default function QuestionList(props) {
       });
   };
 
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition((position) => {
+  //     setLatitude(position.coords.latitude);
+  //     setLongitude(position.coords.longitude)
+  //   })
+  // }, []);
+  
   const questions = [
     {
       text: "How far are you willing to travel?",
@@ -130,7 +119,6 @@ export default function QuestionList(props) {
       text: "What type of cuisine do you want eat?",
       component: (
         <React.Fragment>
-          {/* <FormControl> */}
           <FormControl style={{ width: "40%", marginTop: "2%" }}>
             <InputLabel id="demo-simple-select-label">
               Choose Cuisine Type
@@ -214,7 +202,7 @@ export default function QuestionList(props) {
       ),
     },
   ];
-
+  
   return (
     <QuestionCard align={found ? "" : "center"}>
       {!found ? (
@@ -300,7 +288,8 @@ export default function QuestionList(props) {
                 : "https://static.vecteezy.com/system/resources/previews/004/141/669/original/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg",
               rating: restaurant?.rating,
               tags: restaurant?.categories,
-              address: restaurant?.location.address1,
+              // address:`${restaurant?.location?.address1}, ${restaurant?.location?.city}`,
+              address: restaurant?.location?.address1 + ", " + restaurant?.location?.city  + ", " + restaurant?.location?.state + " " + restaurant?.location?.zip_code + " (" + (restaurant?.distance/1609).toFixed(1) + " mi)",
               title: restaurant?.name
                 ? restaurant.name
                 : [
